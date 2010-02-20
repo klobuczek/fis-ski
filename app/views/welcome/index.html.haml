@@ -1,0 +1,6 @@
+%table
+  -['Men', 'Women'].each do |gender|
+    %tr
+      %td
+        ="#{gender}:"
+      =render :partial => 'category', :collection => @categories, :locals => { :gender => gender[0,1]}

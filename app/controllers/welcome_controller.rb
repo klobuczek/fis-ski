@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    render
+    @categories=1..13
   end
 end
