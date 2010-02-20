@@ -1,0 +1,18 @@
+%tr
+  %td
+    =competitor[:rank]  
+  %td
+    =competitor[:fis_code]
+  %td
+    %a{:href => competitor[:href]}
+      =competitor[:name]
+  %td
+    =competitor[:year]
+  %td
+    =competitor[:nation]
+  %td
+    =competitor[:cup_points]
+  %td
+    %table
+      %tr
+        =render :partial => 'result', :collection => competitor[:results]
