@@ -1,0 +1,11 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", :'xml:lang' => "en"}
+  %head
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
+  %body
+    =render :partial => 'welcome/index'
+    =yield
+    %p Standings are not official. Errors and omissions excepted.
+    %p
+      Please send any questions and suggestions to
+      %a{:href => 'mailto:heinrich@mail.com'} heinrich@mail.com      

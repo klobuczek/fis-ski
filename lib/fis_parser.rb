@@ -49,7 +49,6 @@ class FisParser
   def add_result(url, result)
     fis_code = num(result, 2).to_i
     name = result[3].at_css('a')
-    #puts name.text
     @competitors[fis_code] ||= {:fis_code => fis_code, :name => name.text, :href => name[:href],
                                 :year => num(result, 4).to_i, :nation => result[5].text,
                                 :results => [] }
@@ -60,28 +59,41 @@ class FisParser
     result[index].text[/[0-9\.]+/]
   end
 
+  def compare_fis_points x, y
+     [x,y].each { |z| return 0 if z[:results].size < 9; z[:results][0,9].each {|r| return 0 if r[:cup_points] == 0}}
+     y[:fis_points] <=> x[:fis_points]
+  end
+
   def standings competitors
-    #puts competitors.inspect
-    comparator = Proc.new {|x, y| x[:cup_points] == y[:cup_points] ? x[:fis_points] <=> y[:fis_points] : y[:cup_points] <=> x[:cup_points]}
+    result_comparator = Proc.new {|x, y| x[:cup_points] == y[:cup_points] ? x[:cup_points] == 0 ? x[:rank] <=> y[:rank] : x[:fis_points] <=> y[:fis_points] : y[:cup_points] <=> x[:cup_points]}
+    competitor_comparator = Proc.new {|x, y| x[:cup_points] == y[:cup_points] ? compare_fis_points(x, y) : y[:cup_points] <=> x[:cup_points]}    
     competitors.each do |c|
-      c[:results].sort! &comparator
+      c[:results].sort! &result_comparator
       [:fis_points, :cup_points].each do |attr|
-        sum = 0
+        sum = 0.0
         c[:results].each_with_index {|r, i| sum += r[attr] unless i > 8 or r[:cup_points] == 0}
         c[attr] = sum
       end
       c[:qualified => c[:results].size >= 6]
     end
-    competitors.sort! &comparator
-    rank = 0
+    competitors.sort! &competitor_comparator
+    previous = nil
     competitors.each_with_index do |c,i|
-      rank = i + 1 unless i > 0 and comparator.call(c, competitors[i-1]) == 0
-      c[:rank] = (rank == i+1 ? rank : "")
+      if previous and competitor_comparator.call(previous, c) == 0
+        c[:rank] = previous[:rank]
+        previous[:tie]=c[:tie]=true
+      else
+        c[:rank] = i+1
+        c[:tie] = false
+      end
+      previous = c
     end
   end
 
   def parse gender, cat
     parse_events gender, cat + 5
+    #File.open("log/competitors.yml", "w") {|f| YAML.dump(@competitors, f)}
+    #@competitors = YAML.load_file("log/competitors.yml")
     standings(@competitors.values)
   end
 end

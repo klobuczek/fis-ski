@@ -1,0 +1,8 @@
+%h1 Alpine FIS Masters Standings for the current season
+%p Please select a class below. Note all race data is downloaded from the official FIS site in real time. It may take up to 1 minute for the download to complete before class standings can be calculated.
+%table
+  -['Men', 'Ladies'].each do |gender|
+    %tr
+      %td
+        ="#{gender}:"
+      =render :partial => 'welcome/category', :collection => 1..13, :locals => { :gender => gender[0,1]}
