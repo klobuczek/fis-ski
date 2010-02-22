@@ -1,4 +1,4 @@
 task :cron => :environment do
-   puts "Updating results..."
+   puts "#{Time.now.to_s}: Updating results..."
    puts "done."
 end
