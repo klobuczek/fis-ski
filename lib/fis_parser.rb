@@ -57,7 +57,7 @@ class FisParser
       fis_code = num(result, 2).to_i
       name = result[3].at_css('a')
       competitor = Competitor.find_all_by_fis_code(fis_code).first ||
-              Competitor.create(:fis_code => fis_code, :name => name.text, :href => name[:href], :year => num(result, 4).to_i, :nation => result[5].text, :gender => gender, :category => cat)
+              Competitor.create(:fis_code => fis_code, :name => name.text, :href => name[:href], :year => num(result, 4).to_i, :nation => result[5].text.strip, :gender => gender, :category => cat)
       competitor.results << Result.create(:rank => num(result, 0).to_i, :fis_points => num(result, 7).to_f, :cup_points => num(result, 8).to_f, :href => url)
     end
 
