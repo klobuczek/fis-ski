@@ -1,0 +1,22 @@
+%h2
+  = "Class " + age_category(params[:gender], params[:category].to_i)
+
+%p
+  Competitors in
+  %b bold
+  are qualified for the FMC by having finished at least 6 races.  
+%p
+  =link_to "all", :gender => params[:gender], :category => params[:category]
+  =link_to "qualified only", :gender => params[:gender], :category => params[:category], :qualified => true
+
+%table
+  %tr
+    %th Rank
+    %th
+    %th FIS Code
+    %th Name
+    %th Year
+    %th Nation
+    %th Cup Points
+    %th Finishes
+  =render :partial=> 'competitor', :collection => @competitors
