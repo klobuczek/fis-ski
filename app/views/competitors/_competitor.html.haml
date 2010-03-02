@@ -15,7 +15,7 @@
   -if tie_breaker  
     %td{:align => :right}
       -if competitor.tie
-        =competitor.fis_points
+        ='%.2f' % competitor.fis_points
   %td
     %table
       %tr
