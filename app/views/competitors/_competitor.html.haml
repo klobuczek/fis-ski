@@ -1,8 +1,6 @@
 %tr{:style => "font-weight: #{competitor.results.size < 6 ? 'normal' : 'bold'};"}
   %td{:align => :right}
     =competitor.rank
-  %td
-    ="(t)" if competitor.tie
   %td{:align => :right}
     =competitor.fis_code
   %td
@@ -14,7 +12,11 @@
     =competitor.nation
   %td{:align => :right}
     =competitor.cup_points
+  -if tie_breaker  
+    %td{:align => :right}
+      -if competitor.tie
+        =competitor.fis_points
   %td
     %table
       %tr
-        =render :partial => 'result', :collection => competitor.results
+        =render :partial => 'result', :collection => competitor.results, :locals => {:tie => (competitor.tie and tie_breaker)}

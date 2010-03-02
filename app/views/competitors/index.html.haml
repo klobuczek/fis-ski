@@ -12,11 +12,12 @@
 %table
   %tr
     %th Rank
-    %th
     %th FIS Code
     %th Name
     %th Year
     %th Nation
     %th Cup Points
+    -if tie_breaker
+      %th Race Points Sum
     %th Finishes
-  =render :partial=> 'competitor', :collection => @competitors
+  =render :partial=> 'competitor', :collection => @competitors, :locals => {:tie_breaker => tie_breaker}
