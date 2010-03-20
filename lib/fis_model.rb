@@ -6,4 +6,8 @@ module FisModel
     end
     0
   end
+  
+  def <=> c
+    compare c, [:cup_points, -1], [:fis_points, 1]
+  end
 end

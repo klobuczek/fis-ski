@@ -3,64 +3,86 @@ require 'open-uri'
 
 class FisParser
   class << self
-    def parse_events
+    def update_events season
       ActiveRecord::Base.transaction do
-        Competitor.delete_all
-        fetch("http://www.fis-ski.com/uk/disciplines/masters/results.html").css('div.contenu table[cellpadding="1"] tr').each_with_index do |line, index|
-          details = line.css('td')
-          comp_cat = details[5].text
-          if index > 0 and potential_fmc_race comp_cat
-            parse_races details[3].at_css('a')[:href]
+        fetch("http://www.fis-ski.com/uk/disciplines/masters/fiscalendar.html?seasoncode_search=#{season}&sector_search=MA&category_search=FMC&limit=999").css('div.contenu table[cellpadding="1"] tr').each_with_index do |line, index|
+          if index > 0
+            update_races season, line.css('td')[3].at_css('a')[:href]
           end
         end
       end
+    end
+
+    def parse_results race
+      racers = 0
+      fetch(race.href).css('div.contenu > table[cellpadding="1"] tr').each_with_index do |line, index|
+        result = line.css('td')
+        if index != 0  and s(result, 0) =~ /[0-9]+/
+          load_result(race, result)
+          racers+=1
+        end
+      end
+      racers
     end
 
     private
-    def parse_races url
+    def update_races season, url
       fetch(url).css('div.contenu table[bgcolor="#ffffff"] tr').each_with_index do |line, index|
-        details = line.css('td')
-        gender = details[7].text
-        comp_cat = details[8].text
+        td = line.css('td')
+        comp_cat = s(td, 8)
         if index > 0 and fmc_race comp_cat
-          link = details[4].at_css('a')
-          (1..13).each {|cat| break unless parse_result(link[:href]+"&catage=#{cat+5}", cat, gender)} if link
+          Race.create_or_update_by_codex_and_season(
+                  :season => season,
+                  :date => d(td, 1),
+                  :codex => i(td, 2),
+                  :place => s(td, 4),
+                  :href => h(td, 4),
+                  :nation => c3(td, 5),
+                  :discipline => s(td, 6),
+                  :gender => s(td, 7),
+                  :comments => s(td, 9)
+          )
         end
       end
-    end
-
-    def potential_fmc_race comp_cat
-      not ['MAS', 'SAC'].include? comp_cat
     end
 
     def fmc_race comp_cat
-      ['FMC', 'WCM']
+      ['FMC', 'WCM'].include? comp_cat
     end
 
-    def parse_result url, cat, gender
-      fetch(url).css('div.contenu > table[cellpadding="1"] tr').each_with_index do |line, index|
-        result = line.css('td')
-        if index == 0
-          return false unless result[8] and result[8].text == 'Cup Points'
-        else
-          if result[0].text =~ /[0-9]+/
-            add_result(url, result, gender, cat)
-          end
-        end
-      end
-      true
-    end
-
-    def add_result(url, result, gender, cat)
-      fis_code = num(result, 2).to_i
-      name = result[3].at_css('a')
-      competitor = Competitor.find_all_by_fis_code(fis_code).first ||
-              Competitor.create(:fis_code => fis_code, :name => name.text, :href => name[:href], :year => num(result, 4).to_i, :nation => result[5].text[0,3], :gender => gender, :category => cat)
-      competitor.results << Result.create(:rank => num(result, 0).to_i, :fis_points => num(result, 7).to_f, :cup_points => num(result, 8).to_f, :href => url)
+    def load_result(race, td)
+      Result.create :overall_rank => i(td, 0),
+                    :fis_points => f(td, 7),
+                    :race => race,
+                    :competitor => Competitor.create_or_update_by_fis_code(:fis_code => i(td, 2), :name => s(td, 3), :href => h(td, 3), :gender => race.gender, :year => i(td, 4), :nation => c3(td, 5))
     end
 
     def num result, index
       result[index].text[/[0-9\.]+/]
+    end
+
+    def i td, index
+      num(td, index).to_i
+    end
+
+    def f td, index
+      num(td, index).to_f
+    end
+
+    def s td, i
+      td[i].text
+    end
+
+    def d td, i
+      Date.parse(td[i].text)
+    end
+
+    def c3 td, i
+      s(td, i)[0, 3]
+    end
+
+    def h td, i
+      (link = td[i].at_css('a')) and link[:href]
     end
 
     def fetch url

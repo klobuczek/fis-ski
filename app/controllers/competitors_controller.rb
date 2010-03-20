@@ -1,5 +1,6 @@
 class CompetitorsController < ApplicationController
   def index
-    @competitors = Competitor.classify! Competitor.all(:conditions => {:gender => params[:gender], :category => params[:category].to_i}, :include => :results), params[:qualified] == "true"
+    puts "<#{params[:season].to_i.inspect}>"
+    @competitors = Competitor.classify! Result.for((params[:season] || Season.current).to_i, params[:gender], params[:category].to_i).group_by_competitor, params[:qualified] == "true"
   end
 end

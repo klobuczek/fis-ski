@@ -1,4 +1,4 @@
 %td{:style => "text-decoration: #{result_counter < 9 ? 'none' : 'line-through'}; #{'font-weight: normal;' unless result_counter < 9}"}
-  %a{:href => result.href}
-    =result.rank
-  ="(#{result.fis_points})" if tie and result_counter < 9 
+  %a{:href => fis_race_href(result.race.href), :title => "#{result.race.place} - #{result.race.discipline}"}
+    ="#{result.rank}#{'*' if result.race.factor > 1}"                   
+  ="(#{result.fis_points})" if tie and result_counter < 9
