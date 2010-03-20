@@ -74,7 +74,7 @@ class FisParser
     end
 
     def d td, i
-      Date.parse(td[i].text)
+      Date.strptime(td[i].text, "%d.%m.%Y")
     end
 
     def c3 td, i

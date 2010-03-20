@@ -34,7 +34,7 @@ task :fix => :environment do
   end
 end
 
-task :rebuild => ['db:drop', 'db:create', 'db:migrate', 'load:all']
+task :rebuild => ['db:migrate', 'load:all']
 
 task :double => :environment do
   ActiveRecord::Base.connection.execute "update races set factor=2 where codex in (#{ENV['codex']})"  
