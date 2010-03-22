@@ -5,19 +5,19 @@ class Competitor < ActiveRecord::Base
   attr_accessor :results
 
   def qualified?
-    results.size >= 6
+    results.size >= season.min_races
   end
 
   def cup_points
-    @cup_points ||= calculate 9, :cup_points
+    @cup_points ||= calculate :cup_points
   end
 
   def fis_points
-    @fis_points ||= calculate 9, :fis_points
+    @fis_points ||= calculate :fis_points
   end
 
-  def self.classify! competitors, qualified_only=false
-    competitors.reject!{|c| not c.qualified?} if qualified_only
+  def self.classify! competitors, filter='contetion'
+    competitors.reject!{|c| not c.qualified?} if filter == 'qualified'
     competitors.each {|c| c.results.sort!}
     previous = nil
     competitors.sort!.each_with_index do |c, i|
@@ -32,9 +32,13 @@ class Competitor < ActiveRecord::Base
   end
 
   private
-  def calculate max, attr
+  def season
+    @season ||= Season.new results.first.race.date
+  end
+
+  def calculate attr
     sum = 0.0
-    results.each_with_index {|r, i| sum += r.send attr if i < max}
+    results.each_with_index {|r, i| sum += r.send attr if i < season.max_races}
     sum
   end
 end

@@ -6,8 +6,8 @@
   %b bold
   are qualified for the FMC by having finished at least 6 races.  
 %p
-  =link_to "all", :gender => params[:gender], :category => params[:category]
-  =link_to "qualified only", :gender => params[:gender], :category => params[:category], :qualified => true
+  =link_to "all", :gender => params[:gender], :category => params[:category], :season => season, :filter => :all
+  =link_to "qualified only", :gender => params[:gender], :category => params[:category], :season => season, :filter => :qualified
 
 %table
   %tr

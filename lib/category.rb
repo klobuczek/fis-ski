@@ -1,7 +1,7 @@
-class Category
+  class Category
   def initialize options
     @season = options[:season] if options[:season]
-    @cat = (@season - 26 - options[:year])/5 if options[:year]
+    @cat = (@season.to_i - 26 - options[:year])/5 if options[:year]
     @cat = options[:category] if options[:category]
   end
 
@@ -18,7 +18,7 @@ class Category
   end
 
   def max_year
-    @season - 1 - min_age
+    @season.to_i - 1 - min_age
   end
 
   def min_age

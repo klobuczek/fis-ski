@@ -1,4 +1,4 @@
-%tr{:style => "font-weight: #{competitor.results.size < 6 ? 'normal' : 'bold'};"}
+%tr{:style => "font-weight: #{competitor.results.size < season.min_races ? 'normal' : 'bold'};"}
   %td{:align => :right}
     =competitor.rank
   %td{:align => :right}
