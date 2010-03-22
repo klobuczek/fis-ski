@@ -15,7 +15,7 @@ end
 task :cron => :environment do
   start = Time.new
   puts "Updating results..."
-  load_season Season.current
+  load_season Season.current.to_i
   puts "Results updated in #{Time.now - start}"
 end
 
@@ -23,7 +23,7 @@ namespace :load do
   task :all => :environment do
     start = Time.new
     puts "Updating results..."
-    (Season.earliest..Season.current).each {|s| load_season s}
+    (Season.earliest..Season.current.to_i).each {|s| load_season s}
     puts "Results updated in #{Time.now - start}"
   end
 end
