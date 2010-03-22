@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   layout 'layout'
+
+  helper_method :season
+
+  def season
+    params[:season] ? Season.new(params[:season].to_i) : Season.current
+  end  
 end
