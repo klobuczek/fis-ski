@@ -1,6 +1,6 @@
 module CompetitorsHelper
   def tie_breaker
-    @tie_breaker ||= (@competitors.inject(false) {|r,c| r ||= c.tie} and params[:filter] == 'qualified')
+    @tie_breaker ||= (@competitors.inject(false) {|r,c| r ||= c.tie} and (params[:filter] == 'qualified' or (params[:filter] == 'contention' and season_completed?)))
   end
   
   def season
