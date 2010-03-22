@@ -4,8 +4,8 @@ class Competitor < ActiveRecord::Base
   attr_accessor :rank, :tie
   attr_accessor :results
 
-  def qualified?
-    results.size >= season.min_races
+  def qualified? remaining=0
+    results.size >= season.min_races - remaining
   end
 
   def cup_points
@@ -16,8 +16,10 @@ class Competitor < ActiveRecord::Base
     @fis_points ||= calculate :fis_points
   end
 
-  def self.classify! competitors, filter='contetion'
-    competitors.reject!{|c| not c.qualified?} if filter == 'qualified'
+  def self.classify! competitors, remaining, filter='contetion'
+    competitors.reject! do |c|
+      not (filter == 'qualified' ? c.qualified? : c.qualified?(remaining))
+    end unless filter == 'all'
     competitors.each {|c| c.results.sort!}
     previous = nil
     competitors.sort!.each_with_index do |c, i|
@@ -41,4 +43,5 @@ class Competitor < ActiveRecord::Base
     results.each_with_index {|r, i| sum += r.send attr if i < season.max_races}
     sum
   end
+
 end

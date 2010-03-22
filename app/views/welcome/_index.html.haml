@@ -1,8 +1,8 @@
 %h1 FIS Masters Cup standings for the #{params[:season] || Season.current} season
 %div{:align => 'right'}
-  Other seasons:
+  Previous seasons:
   =render :partial => 'welcome/season', :collection => Season.earliest..Season.current.to_i
-%p Please select a class below. Note all race data is downloaded from the official FIS site. There may be up to 1 hour delay after race results are published on fis-ski.com before they are reflected in the standings.
+%p
 %table
   -['Men', 'Ladies'].each do |gender|
     %tr

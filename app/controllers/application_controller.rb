@@ -9,9 +9,17 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   layout 'layout'
 
-  helper_method :season
+  helper_method :season, :season_completed?
 
   def season
     params[:season] ? Season.new(params[:season].to_i) : Season.current
-  end  
+  end
+
+  def season_completed?
+     remaining_races == 0
+  end
+
+  def remaining_races
+     season.current? ? Race.remaining(params[:gender]) : 0
+  end
 end
