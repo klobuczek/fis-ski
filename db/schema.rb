@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100313224754) do
+ActiveRecord::Schema.define(:version => 20100324231138) do
 
   create_table "competitors", :force => true do |t|
     t.string   "gender",     :limit => 1
@@ -26,20 +26,22 @@ ActiveRecord::Schema.define(:version => 20100313224754) do
   add_index "competitors", ["gender", "year"], :name => "index_competitors_on_gender_and_year"
 
   create_table "races", :force => true do |t|
-    t.integer  "codex",                                  :null => false
-    t.integer  "season",                                 :null => false
-    t.string   "place",                                  :null => false
-    t.string   "nation",                                 :null => false
+    t.integer  "codex",                                     :null => false
+    t.integer  "season",                                    :null => false
+    t.string   "place",                                     :null => false
+    t.string   "nation",                                    :null => false
     t.string   "discipline"
     t.string   "href"
-    t.string   "gender",     :limit => 1,                :null => false
-    t.integer  "factor",                  :default => 1, :null => false
+    t.string   "gender",        :limit => 1,                :null => false
+    t.integer  "factor",                     :default => 1, :null => false
     t.string   "source"
-    t.date     "date",                                   :null => false
+    t.date     "date",                                      :null => false
     t.string   "comments"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "race_category", :limit => 1
+    t.datetime "loaded_at"
   end
 
   add_index "races", ["codex"], :name => "index_races_on_codex"

@@ -5,6 +5,8 @@ def load_season season
       ActiveRecord::Base.transaction do
         if FisParser.parse_results(race) > 0
           race.update_attribute(:status, 'loaded')
+          race.update_attribute(:loaded_at, Time.now)
+          race.update_attribute(:race_category, Category.new(:season => race.season, :year => race.results.first.competitor.year).race_category(race.gender))          
           race.update_category_ranks
         end
       end
