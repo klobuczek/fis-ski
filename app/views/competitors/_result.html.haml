@@ -1,4 +1,4 @@
 %td{:style => "text-decoration: #{result_counter < season.max_races ? 'none' : 'line-through'}; #{'font-weight: normal;' unless result_counter < season.max_races}"}
-  %a{:href => fis_race_href(result.race.href), :title => "#{result.race.place} - #{result.race.discipline}"}
+  %a{:href => fis_race_href(result.race.href), :title => "#{result.race.place} - #{result.race.discipline}, #{result.cup_points} pts."}
     ="#{result.rank}#{'*' if result.race.factor > 1}"                   
   ="(#{result.fis_points})" if tie and result_counter < season.max_races
