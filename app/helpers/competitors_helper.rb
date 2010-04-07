@@ -4,7 +4,7 @@ module CompetitorsHelper
   end
 
   def season
-    params[:season] ? Season.new(params[:season].to_i) : Season.current
+    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
   end
 
   def pass_params filter
@@ -13,5 +13,14 @@ module CompetitorsHelper
 
   def elimination_phase?
     remaining_races < season.min_races
+  end
+
+  def showing_both?
+    params[:filter] == 'all' or (completed_min_races and !season_completed?)
+  end
+                        
+  private
+  def completed_min_races
+    Race.completed_races_count(season, params[:gender], params[:category]) >= season.min_races
   end
 end

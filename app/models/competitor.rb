@@ -17,9 +17,7 @@ class Competitor < ActiveRecord::Base
   end
 
   def self.classify! competitors, remaining, filter='contetion'
-    competitors.reject! do |c|
-      not (filter == 'qualified' ? c.qualified? : c.qualified?(remaining))
-    end unless filter == 'all'
+    competitors.reject! { |c| !c.qualified?(remaining) } unless filter == 'all'
     competitors.each {|c| c.results.sort!}
     previous = nil
     competitors.sort!.each_with_index do |c, i|

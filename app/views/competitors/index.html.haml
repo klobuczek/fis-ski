@@ -2,12 +2,14 @@
   = "Class " + age_category(params[:season], params[:gender], params[:category])
   = "Final" if season_completed?
 
-%p
-  Competitors in
-  %b bold
-  are qualified for the FMC by having finished at least #{season.min_races} races.  
-%p
-  -if elimination_phase?
+-if showing_both?
+  %p
+    Competitors in
+    %b bold
+    are qualified for the FMC by having finished at least #{season.min_races} races.
+      
+-if elimination_phase?
+  %p
     -if params[:filter] == 'all'
       =link_to "hide eliminated", pass_params(:contention), {:title => season_completed? ? 'Shows the final standings' : 'Shows only competitors who still have a chance to complete the required minimum number of races till the end of the season'}    
     -else

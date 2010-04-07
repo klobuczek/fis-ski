@@ -2,7 +2,7 @@
   def initialize options
     @season = options[:season] if options[:season]
     @cat = (@season.to_i - 26 - options[:year])/5 if options[:year]
-    @cat = options[:category] if options[:category]
+    @cat = options[:category].to_i if options[:category]
   end
 
   def to_i
