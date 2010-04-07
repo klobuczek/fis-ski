@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :season, :season_completed?, :remaining_races
 
   def season
-    params[:season] ? Season.new(params[:season].to_i) : Season.current
+    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
   end
 
   def season_completed?

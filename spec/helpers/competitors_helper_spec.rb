@@ -10,7 +10,7 @@ describe CompetitorsHelper, "#showing_both?" do
   end
 
   it "returns true if minimum races completed" do
-      params[:season] = 2010
+      stubs(:season).returns(Season.new 2010)
       Race.expects(:count).returns(6)
       expects(:season_completed?).returns(false)
       showing_both?.should be_true

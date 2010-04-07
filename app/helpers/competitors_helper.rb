@@ -3,10 +3,6 @@ module CompetitorsHelper
     @tie_breaker ||= (@competitors.inject(false) {|r, c| r ||= c.tie} and (params[:filter] == 'qualified' or (params[:filter] == 'contention' and season_completed?)))
   end
 
-  def season
-    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
-  end
-
   def pass_params filter
     {:gender => params[:gender], :category => params[:category], :season => season, :filter => filter}
   end
