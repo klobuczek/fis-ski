@@ -9,7 +9,7 @@ class Result < ActiveRecord::Base
   } do
     def group_by_competitor
       inject({}) do |h, r|
-        ((h[r.competitor.id] ||= r.competitor).results ||= []) << r
+        ((h[r.competitor_id] ||= r.competitor).results ||= []) << r
         h
       end.values
     end
