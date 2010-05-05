@@ -28,4 +28,3 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 config.action_mailer.default_url_options = { :host => 'qa.fismasterscup.com' }
-config.action_mailer.delivery_method = :smtp
