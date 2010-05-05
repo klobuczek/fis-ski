@@ -40,4 +40,6 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 
   config.gem "haml"
+  config.gem "devise", :version => '1.0.7'
+
 end

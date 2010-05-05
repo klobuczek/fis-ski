@@ -4,6 +4,8 @@
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
   %body
     =render :partial => 'welcome/index'
+    .notice=flash[:notice]
+    .alert=flash[:alert]
     =yield
     %p Standings are not official. Errors and omissions excepted.
     %p
