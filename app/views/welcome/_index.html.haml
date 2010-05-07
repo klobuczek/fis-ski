@@ -1,5 +1,5 @@
-%h1 FIS Masters Cup standings for the #{params[:season] || Season.current} season
-%div{:align => 'right'}
+%h2 Standings for the #{params[:season] || Season.current} season
+%div{:align => 'left'}
   Previous seasons:
   =render :partial => 'welcome/season', :collection => Season.earliest..Season.current.to_i
 %p

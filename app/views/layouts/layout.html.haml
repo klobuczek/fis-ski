@@ -3,6 +3,8 @@
   %head
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
   %body
+    %h1 FIS Masters Cup
+    =render :partial => 'welcome/menu'
     =render :partial => 'welcome/index'
     .notice=flash[:notice]
     .alert=flash[:alert]
