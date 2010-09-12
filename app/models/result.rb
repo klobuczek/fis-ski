@@ -3,15 +3,22 @@ class Result < ActiveRecord::Base
   belongs_to :competitor
   belongs_to :race
 
-  named_scope :for, lambda { |season, gender, category|
-    cat = Category.new :season => season, :category => category
-    {:include => [:competitor, :race], :conditions => { :races => { :season => season, :gender => gender}, :competitors => { :year => cat.min_year..cat.max_year }}}
-  } do
-    def group_by_competitor
-      inject({}) do |h, r|
+  class << self
+    def group_by_competitor season, gender, age_category
+      results = by_age_category season, gender, age_category
+      results.inject({}) do |h, r|
         ((h[r.competitor_id] ||= r.competitor).results ||= []) << r
         h
       end.values
+    end
+
+    private
+    def by_category(season, gender, category)
+      includes(:competitor, :race).where(:races => {:season => season, :gender => gender}, :competitors => {:year => category.min_year..category.max_year})
+    end
+
+    def by_age_category season, gender, age_category
+      by_category season, gender, Category.new(:season => season, :category => age_category)
     end
   end
 

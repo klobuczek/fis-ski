@@ -1,16 +1,18 @@
+# @category age category number
+
   class Category
   def initialize options
     @season = options[:season] if options[:season]
-    @cat = (@season.to_i - 26 - options[:year])/5 if options[:year]
-    @cat = options[:category].to_i if options[:category]
+    @age_category = (@season.to_i - 26 - options[:year])/5 if options[:year]
+    @age_category = options[:category].to_i if options[:category]
   end
 
   def to_i
-    @cat
+    @age_category
   end
 
   def to_s
-    @cat.to_s
+    @age_category.to_s
   end
 
   def min_year
@@ -22,7 +24,7 @@
   end
 
   def min_age
-    25 + @cat*5
+    25 + @age_category*5
   end
 
   def max_age
@@ -30,11 +32,11 @@
   end
 
   def race_category gender
-    gender == 'M' ? @cat <= 5 ? 'A' : 'B' : 'C'
+    gender == 'M' ? @age_category <= 5 ? 'A' : 'B' : 'C'
   end
 
   def == other
-    @cat == other.to_i
+    @age_category == other.to_i
   end
 
   def self.same? season, year1, year2

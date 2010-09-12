@@ -12,11 +12,11 @@ module CompetitorsHelper
   end
 
   def showing_both?
-    params[:filter] == 'all' or (completed_min_races and !season_completed?)
+    params[:filter] == 'all' or (completed_min_races? and !season_completed?)
   end
                         
   private
-  def completed_min_races
-    Race.completed_races_count(season, params[:gender], params[:category]) >= season.min_races
+  def completed_min_races?
+    Race.completed(season, params[:gender], params[:category]) >= season.min_races
   end
 end

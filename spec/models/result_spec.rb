@@ -15,15 +15,24 @@ describe Result, "#cup_points" do
   end
 end
 
-describe Result, "#group_by_competitor" do
+describe Result, "#by_category" do
   it "should empty array for empty results" do
-    Result.expects(:find).returns([])
-    Result.for(2010,'M',4).group_by_competitor.should == []
+    Result.expects(:by_age_category).returns([])
+    Result.group_by_competitor(2010,'M',4).should == []
   end
 
   it "should group results by competitors" do
-    Result.expects(:find).returns([r1=competitor_stub(1), r2=competitor_stub(1)])
-    Result.for(2010,'M',4).group_by_competitor.first.results.should include(r1,r2)
+    Result.expects(:by_age_category).returns([r1=competitor_stub(1), r2=competitor_stub(1)])
+    Result.group_by_competitor(2010,'M',4).first.results.should include(r1,r2)
+  end
+
+  it "should return nothing" do
+    Result.send(:by_age_category, 2010, 'M', 4 ).should be_empty
+  end
+
+  it "should return result`" do
+    result = Factory(:result)
+    Result.send(:by_age_category, 2010, 'M', 4 ).should == [result]
   end
 end
 
