@@ -49,5 +49,6 @@ FisSki::Application.configure do
 
   #Custom
   config.middleware.use "Redirecter", "www.fismasterscup.com"
+  config.action_mailer.default_url_options = { :host => 'www.fismasterscup.com' }
 
 end
