@@ -5,7 +5,7 @@ class Competitor < ActiveRecord::Base
   attr_accessor :results
 
   def qualified? remaining=0
-    results.size >= season.min_races - remaining
+    results.select(&:successful?).size >= season.min_races - remaining
   end
 
   def cup_points
@@ -38,7 +38,7 @@ class Competitor < ActiveRecord::Base
 
   def calculate attr
     sum = 0.0
-    results.each_with_index {|r, i| sum += r.send attr if i < season.max_races}
+    results.each_with_index {|r, i| sum += r.send attr if r.send(attr) and i < season.max_races}
     sum
   end
 

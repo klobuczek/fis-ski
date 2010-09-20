@@ -1,6 +1,6 @@
 module WelcomeHelper
-  def age_category season, gender, category 
-    cat = Category.new :season => season.to_i, :category => category.to_i
-    "#{cat.race_category gender}#{category} (#{cat.min_age}-#{cat.max_age})"
+  def age_class season, gender, age_class
+    klass = AgeClass.new :season => season.to_i, :age_class => age_class.to_i
+    "#{klass.age_group gender}#{age_class} (#{klass.min_age}-#{klass.max_age})"
   end
 end

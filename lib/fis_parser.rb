@@ -3,70 +3,96 @@ require 'open-uri'
 
 class FisParser
   class << self
-    def update_events season
-      ActiveRecord::Base.transaction do
-        fetch("http://www.fis-ski.com/uk/disciplines/masters/fiscalendar.html?seasoncode_search=#{season}&sector_search=MA&category_search=FMC&limit=999").css('div.contenu table[cellpadding="1"] tr').each_with_index do |line, index|
-          if index > 0
-            update_races season, line.css('td')[3].at_css('a')[:href]
-          end
-        end
-      end
+    def load_seasons(seasons)
+      seasons.each { |s| load_season s }
     end
 
-    def parse_results race
-      racers = 0
-      fetch(race.href).css('div.contenu > table[cellpadding="1"] tr').each_with_index do |line, index|
-        result = line.css('td')
-        if index != 0  and s(result, 0) =~ /[0-9]+/
-          load_result(race, result)
-          racers+=1
-        end
-      end
-      racers
+    def load_season season
+      fetch_events season
+      update_races season
+      Race.update_factors season
     end
 
     private
-    def update_races season, url
-      fetch(url).css('div.contenu table[bgcolor="#ffffff"] tr').each_with_index do |line, index|
-        td = line.css('td')
-        comp_cat = s(td, 8)
-        if index > 0 and fmc_race comp_cat
+    def fetch_events season
+      each_line("http://www.fis-ski.com/uk/disciplines/masters/fiscalendar.html?seasoncode_search=#{season}&sector_search=MA&limit=999", 'table[cellpadding="1"] tr') do |index, tds|
+        fetch_races season, tds[3].at_css('a')[:href] if index > 0
+      end
+    end
+
+
+    def fetch_races season, url
+      each_line(url, 'table[bgcolor="#ffffff"] tr') do |index, tds|
+        unless index == 0 or tds[2].blank? or tds[8].blank?
           Race.create_or_update_by_codex_and_season(
                   :season => season,
-                  :date => d(td, 1),
-                  :codex => i(td, 2),
-                  :place => s(td, 4),
-                  :href => h(td, 4),
-                  :nation => c3(td, 5),
-                  :discipline => s(td, 6),
-                  :gender => s(td, 7),
-                  :comments => s(td, 9)
+                  :date => d(tds, 1),
+                  :codex => i(tds, 2),
+                  :place => s(tds, 4),
+                  :href => h(tds, 4),
+                  :nation => c3(tds, 5),
+                  :discipline => s(tds, 6),
+                  :gender => s(tds, 7),
+                  :category => s(tds, 8),
+                  :comments => s(tds, 9)
           )
         end
       end
     end
 
-    def fmc_race comp_cat
-      ['FMC', 'WCM'].include? comp_cat
+    def update_races(season)
+      Race.to_be_scored(season).where("href is not null and date < ?", Time.now + 1.week).each do |race|
+        if fetch_results(race)
+          race.update_attribute(:status, 'loaded')
+          race.update_attribute(:loaded_at, Time.now)
+          race.update_attribute(:age_group, AgeClass.new(:season => race.season, :year => race.results.first.competitor.year).age_group(race.gender))
+          race.update_age_class_ranks
+        end
+      end
     end
 
-    def load_result(race, td)
-      Result.create :overall_rank => i(td, 0),
-                    :fis_points => f(td, 7),
+    def fetch_results race
+      loaded = false
+      failure = nil
+      each_line(race.href, '> table[cellpadding="1"] > *') do |index, tds|
+        next if index == 0
+        overall_rank = i(tds, 0)
+        failure =
+                case s(tds, 0)
+                  when 'Disqualified' :
+                    'DSQ'
+                  when 'Did not start' :
+                    'DNS'
+                  when 'Did not finish' :
+                    'DNF'
+                  else
+                    failure
+                end
+        next if tds.length < 6
+        load_result(race, overall_rank, failure, tds)
+        loaded = true
+      end
+      loaded
+    end
+
+    def load_result(race, overall_rank, failure, tds)
+      Result.create :overall_rank => overall_rank,
+                    :failure => failure,
+                    :fis_points => f(tds, 7),
                     :race => race,
-                    :competitor => Competitor.create_or_update_by_fis_code(:fis_code => i(td, 2), :name => s(td, 3), :href => h(td, 3), :gender => race.gender, :year => i(td, 4), :nation => c3(td, 5))
+                    :competitor => Competitor.create_or_update_by_fis_code(:fis_code => i(tds, 2), :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
     end
 
-    def num result, index
-      result[index].text[/[0-9\.]+/]
+    def num tds, index
+      tds[index].text[/[0-9\.]+/] if numeric? tds, index
     end
 
     def i td, index
-      num(td, index).to_i
+      num(td, index).try :to_i
     end
 
     def f td, index
-      num(td, index).to_f
+      num(td, index).try :to_f
     end
 
     def s td, i
@@ -83,6 +109,16 @@ class FisParser
 
     def h td, i
       (link = td[i].at_css('a')) and link[:href]
+    end
+
+    def numeric? tds, i
+      s(tds, i) =~ /[0-9\.]+/
+    end
+
+    def each_line(url, selector)
+      fetch(url).css("div.contenu #{selector}").each_with_index do |line, index|
+        yield(index, (line.name == 'tr' ? line.css('td') : [line]))
+      end
     end
 
     def fetch url

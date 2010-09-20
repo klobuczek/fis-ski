@@ -1,10 +1,10 @@
 %h2 Standings for the #{params[:season] || Season.current} season
 %div{:align => 'left'}
   Previous seasons:
-  =render :partial => 'welcome/season', :collection => (Season.earliest..Season.current.to_i).to_a
+  =render :partial => 'welcome/season', :collection => (Season.fmc_earliest..Season.current.to_i).to_a
 %table
   -['Men', 'Ladies'].each do |gender|
     %tr
       %td
         ="#{gender}:"
-      =render :partial => 'welcome/category', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}
+      =render :partial => 'welcome/age_class', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}

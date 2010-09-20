@@ -6,8 +6,8 @@ describe Race, "#pending" do
   end
 
   it "returns 1 for non completed race" do
-    create_race
-    Race.send(:pending, Season.current, 'L').should == 1
+    Factory :race
+    Race.send(:pending, Season.current, 'M').should == 1
   end
 end
 
@@ -17,7 +17,7 @@ describe Race, "#completed" do
   end
 
   it "returns 1 for completed race" do
-    create_race :status => Race::LOADED, :gender => 'M', :race_category => 'A'
+    Factory :race, :status => Race::LOADED,  :age_group => 'A'
     Race.send(:scored, Season.current, 'A').should == 1
   end
 end
@@ -39,6 +39,18 @@ describe Race, "#remaining" do
     Race.expects(:pending).returns(3)
     Race.expects(:scored).times(2).returns(3, 2)
     Race.remaining('M', 3).should == 1
+  end
+end
+
+describe Race, "#results" do
+  it "returns successful results" do
+    Factory :result
+    Race.first.results.count.should == 1
+  end
+
+  it "returns no successful results" do
+    Factory :result, :overall_rank => nil, :failure => 'DSQ'
+    Race.first.results.count.should == 0
   end
 end
 

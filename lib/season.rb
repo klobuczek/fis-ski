@@ -8,6 +8,10 @@ class Season
   end
 
   def self.earliest
+    1999
+  end
+
+  def self.fmc_earliest
     2004
   end
 

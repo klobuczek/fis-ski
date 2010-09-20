@@ -21,4 +21,11 @@ describe Competitor, "#calculate" do
       c.send(:calculate, :any_attr).should == 10.0
   end
 
+  it "should sort correctly" do
+    r1 = Factory(:result, :rank => nil, :fis_points => nil)
+    r2 = Factory(:result, :rank => 20, :fis_points => 100)
+    r1.competitor.results=[r1,r2]
+    r1.competitor.results.sort!
+    r1.competitor.results.should == [r2,r1]
+  end
 end

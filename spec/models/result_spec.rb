@@ -17,22 +17,28 @@ end
 
 describe Result, "#by_category" do
   it "should empty array for empty results" do
-    Result.expects(:by_age_category).returns([])
+    Result.expects(:by_age_class).returns([])
     Result.group_by_competitor(2010,'M',4).should == []
   end
 
   it "should group results by competitors" do
-    Result.expects(:by_age_category).returns([r1=competitor_stub(1), r2=competitor_stub(1)])
+    Result.expects(:by_age_class).returns([r1=competitor_stub(1), r2=competitor_stub(1)])
     Result.group_by_competitor(2010,'M',4).first.results.should include(r1,r2)
   end
 
   it "should return nothing" do
-    Result.send(:by_age_category, 2010, 'M', 4 ).should be_empty
+    Result.send(:by_age_class, 2010, 'M', 4 ).should be_empty
   end
 
   it "should return result`" do
     result = Factory(:result)
-    Result.send(:by_age_category, 2010, 'M', 4 ).should == [result]
+    Result.send(:by_age_class, Season.current, 'M', 4 ).should == [result]
+  end
+end
+
+describe Result, "#sort!" do
+  it "should sort correctly" do
+    [r1 = Factory.build(:result, :rank => nil, :fis_points => nil), r2 = Factory.build(:result, :rank => 20, :fis_points => 100)].sort.should == [r2, r1]
   end
 end
 

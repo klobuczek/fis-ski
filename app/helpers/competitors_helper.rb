@@ -4,7 +4,7 @@ module CompetitorsHelper
   end
 
   def pass_params filter
-    {:gender => params[:gender], :category => params[:category], :season => season, :filter => filter}
+    {:gender => params[:gender], :age_class => params[:age_class], :season => season, :filter => filter}
   end
 
   def elimination_phase?
@@ -17,6 +17,6 @@ module CompetitorsHelper
                         
   private
   def completed_min_races?
-    Race.completed(season, params[:gender], params[:category]) >= season.min_races
+    Race.completed(season, params[:gender], params[:age_class]) >= season.min_races
   end
 end

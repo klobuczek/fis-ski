@@ -1,43 +1,34 @@
-def load_season season
-  ActiveRecord::Base.transaction do
-    FisParser.update_events season
-    Race.find(:all, :conditions => ["season = ? and href is not null and (comments is null or comments != 'Cancelled') and (status is null or status != 'loaded') and date < ?", season, Time.now + 1.week]).each do |race|
-      ActiveRecord::Base.transaction do
-        if FisParser.parse_results(race) > 0
-          race.update_attribute(:status, 'loaded')
-          race.update_attribute(:loaded_at, Time.now)
-          race.update_attribute(:race_category, Category.new(:season => race.season, :year => race.results.first.competitor.year).race_category(race.gender))          
-          race.update_category_ranks
-        end
-      end
-    end
-  end
-end
-
-task :cron => :environment do
-  start = Time.new
-  puts "Updating results..."
-  load_season Season.current.to_i
-  puts "Results updated in #{Time.now - start}"
-end
+task :cron => 'load:season'
 
 namespace :load do
   task :all => :environment do
-    start = Time.new
-    puts "Updating results..."
-    (Season.earliest..Season.current.to_i).each {|s| load_season s}
-    puts "Results updated in #{Time.now - start}"
+    timer do
+      FisParser.load_seasons(Season.earliest..Season.current.to_i)
+    end
+  end
+
+  task :season => :environment do
+    timer do
+      ActiveRecord::Base.transaction { FisParser.load_season((ENV['season'] || Season.current).to_i) }
+    end
   end
 end
 
 task :fix => :environment do
   ActiveRecord::Base.transaction do
-    Race.all(:include => {:results => :competitor}).each {|race| race.update_category_ranks }
+    Race.all(:include => {:results => :competitor}).each { |race| race.update_age_class_ranks }
   end
 end
 
 task :rebuild => ['db:migrate', 'load:all']
 
 task :double => :environment do
-  ActiveRecord::Base.connection.execute "update races set factor=2 where codex in (#{ENV['codex']}) and season = #{Season.current.to_i}"  
+  ActiveRecord::Base.connection.execute "update races set factor=2 where codex in (#{ENV['codex']}) and season = #{Season.current.to_i}"
+end
+
+def timer
+  puts "Updating results..."
+  start = Time.new
+  yield
+  puts "Results updated in #{Time.now - start}"
 end

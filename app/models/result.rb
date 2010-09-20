@@ -3,9 +3,12 @@ class Result < ActiveRecord::Base
   belongs_to :competitor
   belongs_to :race
 
+  scope :successful, where("rank is not null")
+  scope :started, where("failure is null or failure <> 'DNS'")
+
   class << self
-    def group_by_competitor season, gender, age_category
-      results = by_age_category season, gender, age_category
+    def group_by_competitor season, gender, age_class
+      results = by_age_class season, gender, age_class
       results.inject({}) do |h, r|
         ((h[r.competitor_id] ||= r.competitor).results ||= []) << r
         h
@@ -13,17 +16,22 @@ class Result < ActiveRecord::Base
     end
 
     private
-    def by_category(season, gender, category)
-      includes(:competitor, :race).where(:races => {:season => season, :gender => gender}, :competitors => {:year => category.min_year..category.max_year})
+    def where_age_class(season, gender, age_class)
+      includes(:competitor, :race).where(:races => Race::FMC).started.where(:races => {:season => season, :gender => gender}, :competitors => {:year => age_class.min_year..age_class.max_year})
     end
 
-    def by_age_category season, gender, age_category
-      by_category season, gender, Category.new(:season => season, :category => age_category)
+    def by_age_class season, gender, age_class
+      where_age_class season, gender, AgeClass.new(:season => season, :age_class => age_class)
     end
   end
 
   def cup_points
     @cup_points ||=
-            (rank <= 3 ? 30 - 5*rank : rank <= 15 ? 16 - rank : 0)*race.factor
+            ((rank.nil? or rank > 15) ? 0 : rank > 3 ? 16 - rank : 30 - 5*rank)*race.factor
   end
+
+  def successful?
+    rank
+  end
+
 end
