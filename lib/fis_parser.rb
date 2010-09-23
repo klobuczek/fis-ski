@@ -42,10 +42,10 @@ class FisParser
 
     def update_races(season)
       Race.to_be_scored(season).where("href is not null and date < ?", Time.now + 1.week).each do |race|
-        if fetch_results(race)
+        if fetch_results(race) and year=race.results.first.competitor.year
           race.update_attribute(:status, 'loaded')
           race.update_attribute(:loaded_at, Time.now)
-          race.update_attribute(:age_group, AgeClass.new(:season => race.season, :year => race.results.first.competitor.year).age_group(race.gender))
+          race.update_attribute(:age_group, AgeClass.new(:season => race.season, :year => year).age_group(race.gender))
           race.update_age_class_ranks
         end
       end
