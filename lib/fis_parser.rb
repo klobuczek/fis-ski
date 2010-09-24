@@ -23,7 +23,7 @@ class FisParser
 
     def fetch_races season, url
       each_line(url, 'table[bgcolor="#ffffff"] tr') do |index, tds|
-        unless index == 0 or i(tds, 2).nil? or tds[8].blank?
+        unless index == 0 or tds[8].blank? or i(tds, 2).nil?
           Race.create_or_update_by_codex_and_season(
                   :season => season,
                   :date => d(tds, 1),
