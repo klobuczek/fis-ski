@@ -38,4 +38,8 @@ class Season
   def to_s
     @season.to_s
   end
+
+  def advanced?
+    @season <= Time.now.year
+  end
 end

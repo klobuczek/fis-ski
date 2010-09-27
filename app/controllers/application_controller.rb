@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def season_completed?
-    remaining_races == 0
+    remaining_races == 0 and season.advanced?
   end
 
   def remaining_races

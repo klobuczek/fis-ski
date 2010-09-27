@@ -17,7 +17,7 @@ class Competitor < ActiveRecord::Base
   end
 
   def self.classify! competitors, remaining, filter='contetion'
-    competitors.reject! { |c| !c.qualified?(remaining) } unless filter == 'all'
+    competitors.reject! { |c| !c.qualified?(remaining) and c.season.advanced? } unless filter == 'all'
     competitors.each {|c| c.results.sort!}
     previous = nil
     competitors.sort!.each_with_index do |c, i|
@@ -31,11 +31,11 @@ class Competitor < ActiveRecord::Base
     end
   end
 
-  private
   def season
     @season ||= Season.new results.first.race.date
   end
 
+  private
   def calculate attr
     sum = 0.0
     results.each_with_index {|r, i| sum += r.send attr if r.send(attr) and i < season.max_races}
