@@ -33,7 +33,6 @@ class Race < ActiveRecord::Base
       Race.update_all 'factor=1', :season => season
       ('A'..'C').each do |age_group|
         finals = in_season(season).where(:age_group => age_group, :category => 'FMC').order('date desc').limit(2)
-        puts finals.inspect
         return if finals.count < 2 or finals.last.date < Date.new(season, 3, 1)
         finals.first.double_points
         finals.last.double_points if finals.first.date - 1.day == finals.last.date
