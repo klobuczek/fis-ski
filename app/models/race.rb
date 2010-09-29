@@ -32,7 +32,7 @@ class Race < ActiveRecord::Base
       #Consider finals with double points to be either 2 consecutive days at the end of the season or the last race of WMC
       Race.update_all 'factor=1', :season => season
       ('A'..'C').each do |age_group|
-        finals = in_season(season).where(:age_group => age_group, :category => 'FMC').order('date desc').limit(2)
+        finals = in_season(season).where(:age_group => age_group, :category => 'FMC').order('date desc').limit(2).all
         return if finals.count < 2 or finals.last.date < Date.new(season, 3, 1)
         finals.first.double_points
         finals.last.double_points if finals.first.date - 1.day == finals.last.date
