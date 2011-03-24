@@ -54,6 +54,34 @@ describe Race, "#results" do
   end
 end
 
+describe Race, "#update_factors" do
+  before :each do
+    @date = Date.parse '01.03.2011'
+    @fmc = Factory :race, :category => 'FMC', :date => @date
+  end
+
+  it "for last FMC race of WMC" do
+    wmc = Factory :race, :category => 'WMC', :date => @date - 1.day
+    Race.update_factors 2011
+    wmc.reload.factor.should == 1
+    @fmc.reload.factor.should == 2
+  end
+
+  it "for single final FMC race" do
+    fmc = Factory :race, :category => 'FMC', :date => @date - 2.days
+    Race.update_factors 2011
+    fmc.reload.factor.should == 1
+    @fmc.reload.factor.should == 2
+  end
+
+  it "for 2 final FMC races" do
+    fmc = Factory :race, :category => 'FMC', :date => @date - 1.day
+    Race.update_factors 2011
+    fmc.reload.factor.should == 2
+    @fmc.reload.factor.should == 2
+  end
+end
+
 def create_race options={}
   Race.create!({:gender => 'L', :codex => 1, :season => Season.current, :date => Time.now, :place => 'anywhere', :nation => 'any'}.merge(options))
 end

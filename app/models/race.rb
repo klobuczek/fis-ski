@@ -28,20 +28,21 @@ class Race < ActiveRecord::Base
     end
 
     def update_factors(season)
-      return unless season >= 2010
+      return unless season >= 2010 && last_fmc_race = fmc_races(season).first
       #Consider finals with double points to be either 2 consecutive days at the end of the season or the last race of WMC
       Race.update_all 'factor=1', :season => season
-      ('A'..'C').each do |age_group|
-        finals = in_season(season).where(:age_group => age_group, :category => 'FMC').order('date desc').limit(2).all
-        return if finals.count < 2 or finals.last.date < Date.new(season, 3, 1)
-        finals.first.double_points
-        finals.last.double_points if finals.first.date - 1.day == finals.last.date
+      fmc_races(season).where('date >= ?', last_fmc_race.date - 1.day).all.each do |race|
+        race.double_points
       end
     end
 
     private
     def in_season season
       where(:season => season.to_i)
+    end
+
+    def fmc_races season
+      in_season(season).where(:category => 'FMC').order('date desc')
     end
 
     def pending season, gender
