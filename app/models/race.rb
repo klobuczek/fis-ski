@@ -30,8 +30,9 @@ class Race < ActiveRecord::Base
     def update_factors(season)
       return unless season >= 2010 && last_fmc_race = fmc_races(season).first
       #Consider finals with double points to be either 2 consecutive days at the end of the season or the last race of WMC
+      #At the begin of the season codex may be missing so do not double factors until March
       Race.update_all 'factor=1', :season => season
-      fmc_races(season).where('date >= ?', last_fmc_race.date - 1.day).all.each do |race|
+      fmc_races(season).where('date >= ?', [last_fmc_race.date - 1.day, Date.new(season, 3, 1)].max).all.each do |race|
         race.double_points
       end
     end
