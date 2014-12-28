@@ -1,0 +1,3 @@
+%td{:style => "text-decoration: #{considered(result_counter, result) ? 'none' : 'line-through'}; #{'font-weight: normal;' unless considered(result_counter, result)}"}
+  %a{:href => fis_race_href(result.race.href), :title => details(result)}
+    ="#{result.rank || result.failure}#{'*' if result.race.factor > 1}"
