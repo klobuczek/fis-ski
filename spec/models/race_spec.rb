@@ -1,5 +1,3 @@
-require 'spec/spec_helper'
-
 describe Race, "#pending" do
   it "returns 0 for no races" do
     Race.send(:pending, Season.current, 'L').should == 0

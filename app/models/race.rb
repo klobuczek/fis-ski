@@ -2,11 +2,11 @@ class Race < ActiveRecord::Base
   LOADED = 'loaded'
   FMC = {:category => %w{FMC WCM}}
 
-  has_many :results, :conditions => "overall_rank is not null", :order => "overall_rank"
-  has_many :starts, :class_name => Result, :conditions => "failure is null or failure <> 'DNS'", :order => "failure, overall_rank"
+  has_many :results, -> { where("overall_rank is not null").order("overall_rank") }
+  has_many :starts, -> { where("failure is null or failure <> 'DNS'").order("failure, overall_rank") }, class_name: Result
 
   scope :to_be_scored, lambda { |season| in_season(season).where("comments is null or comments != 'Cancelled'").where("status is null or status != '#{LOADED}'") }
-  scope :fmc, where(FMC)
+  scope :fmc, -> { where(FMC) }
 
   class << self
     def remaining gender, age_class=nil

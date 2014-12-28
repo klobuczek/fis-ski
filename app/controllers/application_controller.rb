@@ -1,24 +1,14 @@
 class ApplicationController < ActionController::Base
   helper :all
   # include all helpers, all the time
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
   # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   layout 'layout'
 
-  helper_method :season, :season_completed?, :remaining_races
-
-  def season
-    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
-  end
-
-  def season_completed?
-    remaining_races == 0 and season.advanced?
-  end
-
-  def remaining_races
-    season.current? ? Race.remaining(params[:gender], params[:age_class].to_i) : 0
-  end
+  helper :application
 end

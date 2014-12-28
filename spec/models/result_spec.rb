@@ -1,5 +1,3 @@
-require 'spec/spec_helper'
-
 describe Result, "#cup_points" do
   [[1, 1, 25], [2, 1, 20], [3, 1, 15], [4, 1, 12], [17, 1, 0], [1, 2, 50]].each do |rank, factor, cup_points|
     it "returns #{cup_points} for rank #{rank}" do

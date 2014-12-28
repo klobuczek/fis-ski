@@ -24,17 +24,16 @@ class FisParser
     def fetch_races season, url
       each_line(url, 'table[bgcolor="#ffffff"] tr') do |index, tds|
         unless index == 0 or tds[8].blank? or i(tds, 2).nil?
-          Race.create_or_update_by_codex_and_season(
-                  :season => season,
-                  :date => d(tds, 1),
-                  :codex => i(tds, 2),
-                  :place => s(tds, 4),
-                  :href => h(tds, 4),
-                  :nation => c3(tds, 5),
-                  :discipline => s(tds, 6),
-                  :gender => s(tds, 7),
-                  :category => s(tds, 8),
-                  :comments => s(tds, 9)
+          create_or_update(Race,
+                           {:season => season, :codex => i(tds, 2)},
+                           :date => d(tds, 1),
+                           :place => s(tds, 4),
+                           :href => h(tds, 4),
+                           :nation => c3(tds, 5),
+                           :discipline => s(tds, 6),
+                           :gender => s(tds, 7),
+                           :category => s(tds, 8),
+                           :comments => s(tds, 9)
           )
         end
       end
@@ -58,16 +57,16 @@ class FisParser
         next if index == 0
         overall_rank = i(tds, 0)
         failure =
-                case s(tds, 0)
-                  when 'Disqualified' :
-                    'DSQ'
-                  when 'Did not start' :
-                    'DNS'
-                  when 'Did not finish' :
-                    'DNF'
-                  else
-                    failure
-                end
+            case s(tds, 0)
+              when 'Disqualified'
+                'DSQ'
+              when 'Did not start'
+                'DNS'
+              when 'Did not finish'
+                'DNF'
+              else
+                failure
+            end
         next if tds.length < 6
         load_result(race, overall_rank, failure, tds)
         loaded = true
@@ -80,7 +79,13 @@ class FisParser
                     :failure => failure,
                     :fis_points => f(tds, 7),
                     :race => race,
-                    :competitor => Competitor.create_or_update_by_fis_code(:fis_code => i(tds, 2), :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
+                    :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
+    end
+
+    def create_or_update klass, keys, attributes
+      object = klass.find_by(keys)
+      object.update!(attributes) if object
+      object || klass.create!(keys.merge attributes)
     end
 
     def num tds, index

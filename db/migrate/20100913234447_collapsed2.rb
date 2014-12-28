@@ -71,8 +71,8 @@ class Collapsed2 < ActiveRecord::Migration
     add_index "users", ["email"], :name => "index_users_on_email", :unique => true
     add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
-    add_foreign_key :results, :competitor_id, :competitors
-    add_foreign_key :results, :race_id, :races
+    add_foreign_key :results, :competitors
+    add_foreign_key :results, :races
 
   end
 

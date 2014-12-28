@@ -1,5 +1,3 @@
-require 'spec/spec_helper'
-
 describe Competitor, "#calculate" do
   it "returns 0 for no results" do
       c=Competitor.new

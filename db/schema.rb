@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -8,80 +9,83 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100916015719) do
+ActiveRecord::Schema.define(version: 20101003222849) do
 
-  create_table "competitors", :force => true do |t|
-    t.string   "gender",     :limit => 1
-    t.integer  "fis_code",                :null => false
-    t.string   "name"
-    t.string   "href"
-    t.integer  "year"
-    t.string   "nation",     :limit => 3
+  create_table "competitors", force: :cascade do |t|
+    t.string   "gender",     limit: 1
+    t.integer  "fis_code",   limit: 4,   null: false
+    t.string   "name",       limit: 255
+    t.string   "href",       limit: 255
+    t.integer  "year",       limit: 4
+    t.string   "nation",     limit: 3
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "competitors", ["fis_code"], :name => "index_competitors_on_fis_code"
-  add_index "competitors", ["gender", "year"], :name => "index_competitors_on_gender_and_year"
+  add_index "competitors", ["fis_code"], name: "index_competitors_on_fis_code", using: :btree
+  add_index "competitors", ["gender", "year"], name: "index_competitors_on_gender_and_year", using: :btree
 
-  create_table "races", :force => true do |t|
-    t.integer  "codex",                                  :null => false
-    t.integer  "season",                                 :null => false
-    t.string   "place",                                  :null => false
-    t.string   "nation",                                 :null => false
-    t.string   "discipline"
-    t.string   "href"
-    t.string   "gender",     :limit => 1,                :null => false
-    t.integer  "factor",                  :default => 1, :null => false
-    t.date     "date",                                   :null => false
-    t.string   "comments"
-    t.string   "status"
+  create_table "races", force: :cascade do |t|
+    t.integer  "codex",      limit: 4,               null: false
+    t.integer  "season",     limit: 4,               null: false
+    t.string   "place",      limit: 255,             null: false
+    t.string   "nation",     limit: 255,             null: false
+    t.string   "discipline", limit: 255
+    t.string   "href",       limit: 255
+    t.string   "gender",     limit: 1,               null: false
+    t.integer  "factor",     limit: 4,   default: 1, null: false
+    t.date     "date",                               null: false
+    t.string   "comments",   limit: 255
+    t.string   "status",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "age_group",  :limit => 1
+    t.string   "age_group",  limit: 1
     t.datetime "loaded_at"
-    t.string   "category",   :limit => 3,                :null => false
+    t.string   "category",   limit: 3,               null: false
   end
 
-  add_index "races", ["codex"], :name => "index_races_on_codex"
+  add_index "races", ["codex"], name: "index_races_on_codex", using: :btree
 
-  create_table "results", :force => true do |t|
-    t.integer  "competitor_id",              :null => false
-    t.integer  "race_id",                    :null => false
-    t.integer  "rank"
-    t.float    "fis_points"
+  create_table "results", force: :cascade do |t|
+    t.integer  "competitor_id", limit: 4,  null: false
+    t.integer  "race_id",       limit: 4,  null: false
+    t.integer  "rank",          limit: 4
+    t.float    "fis_points",    limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "overall_rank"
-    t.string   "failure",       :limit => 3
+    t.integer  "overall_rank",  limit: 4
+    t.string   "failure",       limit: 3
+    t.float    "time",          limit: 24
   end
 
-  add_index "results", ["competitor_id"], :name => "index_results_on_competitor_id"
-  add_index "results", ["race_id"], :name => "index_results_on_race_id"
+  add_index "results", ["competitor_id"], name: "index_results_on_competitor_id", using: :btree
+  add_index "results", ["race_id"], name: "index_results_on_race_id", using: :btree
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
-    t.string   "confirmation_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                limit: 255, default: "", null: false
+    t.string   "encrypted_password",   limit: 128, default: "", null: false
+    t.string   "password_salt",        limit: 255, default: "", null: false
+    t.string   "confirmation_token",   limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.string   "reset_password_token", limit: 255
+    t.string   "remember_token",       limit: 255
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",        limit: 4,   default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",   limit: 255
+    t.string   "last_sign_in_ip",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "results", "competitors"
+  add_foreign_key "results", "races"
 end

@@ -1,5 +1,3 @@
-require 'spec/spec_helper'
-
 describe FisParser, "#update_events" do
 
   it "should not create races if no races found" do
@@ -8,7 +6,7 @@ describe FisParser, "#update_events" do
   end
 
   it "should record failures" do
-    FisParser.send(:fetch_results, Factory(:race, :href => path(:results_with_failures)))
+    FisParser.send(:fetch_results, create(:race, :href => path(:results_with_failures)))
     Result.where(:failure => 'DSQ').count.should > 0
   end
 

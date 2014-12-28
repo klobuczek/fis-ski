@@ -3,8 +3,8 @@ class Result < ActiveRecord::Base
   belongs_to :competitor
   belongs_to :race
 
-  scope :successful, where("rank is not null")
-  scope :started, where("failure is null or failure <> 'DNS'")
+  scope :successful, -> { where("rank is not null") }
+  scope :started, -> { where("failure is null or failure <> 'DNS'") }
 
   class << self
     def group_by_competitor season, gender, age_class
@@ -27,7 +27,7 @@ class Result < ActiveRecord::Base
 
   def cup_points
     @cup_points ||=
-            ((rank.nil? or rank > 15) ? 0 : rank > 3 ? 16 - rank : 30 - 5*rank)*race.factor
+        ((rank.nil? or rank > 15) ? 0 : rank > 3 ? 16 - rank : 30 - 5*rank)*race.factor
   end
 
   def successful?
