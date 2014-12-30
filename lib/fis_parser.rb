@@ -15,27 +15,26 @@ class FisParser
 
     private
     def fetch_events season
-      each_line("http://www.fis-ski.com/uk/disciplines/masters/fiscalendar.html?seasoncode_search=#{season}&sector_search=MA&limit=999", 'table[cellpadding="1"] tr') do |index, tds|
-        fetch_races season, tds[3].at_css('a')[:href] if index > 0
+      each_line("http://data.fis-ski.com/masters/home.html?seasoncode_search=#{season}&sector_search=MA&limit=999", 'tr[data-line]') do |index, tds|
+        fetch_races season, tds[2].at_css('a')[:href]
       end
     end
 
 
+    DATA_SELECTOR = '.footable > tbody > tr:not(.tr-sep)'
+
     def fetch_races season, url
-      each_line(url, 'table[bgcolor="#ffffff"] tr') do |index, tds|
-        unless index == 0 or tds[8].blank? or i(tds, 2).nil?
-          create_or_update(Race,
-                           {:season => season, :codex => i(tds, 2)},
-                           :date => d(tds, 1),
-                           :place => s(tds, 4),
-                           :href => h(tds, 4),
-                           :nation => c3(tds, 5),
-                           :discipline => s(tds, 6),
-                           :gender => s(tds, 7),
-                           :category => s(tds, 8),
-                           :comments => s(tds, 9)
-          )
-        end
+      each_line(url, DATA_SELECTOR) do |index, tds|
+        codex = i(tds, 4)
+        hash = {:date => d(tds, 1),
+                :place => tds[2].at_css('span').text,
+                :href => h(tds, 4),
+                :nation => c3(tds, 3),
+                :discipline => s(tds, 5),
+                :gender => s(tds, 6),
+                :category => s(tds, 7),
+                :comments => s(tds, 8)}
+        create_or_update(Race, {:season => season, :codex => codex}, hash) unless hash[:category].blank? or codex.nil?
       end
     end
 
@@ -53,8 +52,7 @@ class FisParser
     def fetch_results race
       loaded = false
       failure = nil
-      each_line(race.href, '> table[cellpadding="1"] > *') do |index, tds|
-        next if index == 0
+      each_line(race.href, DATA_SELECTOR) do |index, tds|
         overall_rank = i(tds, 0)
         failure =
             case s(tds, 0)
@@ -77,7 +75,7 @@ class FisParser
     def load_result(race, overall_rank, failure, tds)
       Result.create :overall_rank => overall_rank,
                     :failure => failure,
-                    :fis_points => f(tds, 7),
+                    :fis_points => f(tds, 8),
                     :race => race,
                     :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
     end
@@ -121,8 +119,9 @@ class FisParser
     end
 
     def each_line(url, selector)
-      fetch(url).css("div.contenu #{selector}").each_with_index do |line, index|
-        yield(index, (line.name == 'tr' ? line.css('td') : [line]))
+      # fetch(url).css("div.contenu #{selector}").each_with_index do |line, index|
+      fetch(url).css(selector).each_with_index do |line, index|
+        yield(index, (line.name == 'tr' ? line.css('>td') : [line]))
       end
     end
 

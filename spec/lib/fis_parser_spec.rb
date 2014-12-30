@@ -7,11 +7,11 @@ describe FisParser, "#update_events" do
 
   it "should record failures" do
     FisParser.send(:fetch_results, create(:race, :href => path(:results_with_failures)))
-    Result.where(:failure => 'DSQ').count.should > 0
+    expect(Result.where(:failure => 'DSQ').count).to be > 0
   end
 
   it "should convert integer values" do
-    FisParser.send(:i, [Nokogiri::HTML('&nbsp;5200921')],0).should == 5200921
+    expect(FisParser.send(:i, [Nokogiri::HTML('&nbsp;5200921')],0)).to eq(5200921)
   end
 end
 

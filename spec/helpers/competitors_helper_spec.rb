@@ -14,8 +14,7 @@ describe CompetitorsHelper, :type => :helper do
     end
 
     it "should be able to call season_completed?" do
-      pending
-      assert season_completed?
+      expect(season_completed?).to be false
     end
   end
 end
