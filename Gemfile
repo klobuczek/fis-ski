@@ -32,9 +32,6 @@ gem 'sdoc', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-
 gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
@@ -46,9 +43,15 @@ gem 'nokogiri'
 #   gem 'webrat'
 # end
 
-
 gem "haml"
 gem "devise"
+
+group :development do
+# Use Capistrano for deployment
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+end
 
 #test
 group :test, :development do
