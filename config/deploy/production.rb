@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '212.71.255.62', user: 'root', roles: %w{web app}, ssh_options: {forward_agent: true, auth_methods: %w(publickey) }
+server '212.71.255.62', user: 'root', roles: %w{web app worker}, ssh_options: {forward_agent: true, auth_methods: %w(publickey) }
 
 
 # Custom SSH Options

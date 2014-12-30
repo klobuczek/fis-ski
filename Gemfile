@@ -45,6 +45,8 @@ gem 'nokogiri'
 
 gem "haml"
 gem "devise"
+gem "daemons"
+gem "clockwork"
 
 group :development do
 # Use Capistrano for deployment

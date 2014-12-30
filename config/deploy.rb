@@ -47,4 +47,5 @@ namespace :deploy do
     end
   end
 
+  after :restart, 'clockwork:restart'
 end
