@@ -34,6 +34,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/ca
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :rvm_ruby_version, '2.2.0@fis-ski'
+
 namespace :deploy do
 
   after :restart, :clear_cache do

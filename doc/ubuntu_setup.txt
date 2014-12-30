@@ -1,1 +1,1 @@
-set SECRET_KEY_BASE env var (rake secret)
+set SECRET_KEY_BASE env var in /etc/environment (rake secret)
