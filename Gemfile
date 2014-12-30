@@ -33,7 +33,7 @@ gem 'sdoc', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 
 gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
