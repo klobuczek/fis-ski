@@ -78,7 +78,7 @@ FisSki::Application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Custom
-  config.middleware.use "Redirecter", "www.fismasterscup.com"
+  # config.middleware.use "Redirecter", "www.fismasterscup.com"
   config.action_mailer.default_url_options = { :host => 'www.fismasterscup.com' }
 
 end
