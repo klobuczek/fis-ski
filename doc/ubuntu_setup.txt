@@ -1,1 +1,28 @@
 set SECRET_KEY_BASE env var in /etc/environment (rake secret)
+
+    5  apt-get update
+    6  apt-get upgrade
+    7  apt-get install git
+   10  apt-get install mysql-server mysql-client
+   18  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+   19  curl -L get.rvm.io | bash -s stable
+   20  source ~/.rvm/scripts/rvm
+   21  source ~/.profile
+   22  source /etc/profile.d/rvm.sh
+   23  rvm install 2.2.0
+   25  rvm use 2.2.0@fis-ski --create
+   26  gem install passenger
+   28  apt-get install libcurl4-openssl-dev
+   29  rvmsudo passenger-install-nginx-module
+   31  mkdir .ssh
+   32  cd .ssh
+   33  vi authorized_keys
+   49  wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh
+   50  sudo mv init-deb.sh /etc/init.d/nginx
+   51  sudo chmod +x /etc/init.d/nginx
+   52  sudo /usr/sbin/update-rc.d -f nginx defaults
+   83  apt-get install build-essential libmysqlclient-dev
+   85  apt-get install libv8-dev
+   88  apt-get install nodejs
+  166  chmod -R og+w /var/www/fis-ski/shared/log
+  191  rake db:create RAILS_ENV=production
