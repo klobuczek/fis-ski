@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231043453) do
+ActiveRecord::Schema.define(version: 20141231045032) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "gender",     limit: 1
@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(version: 20141231043453) do
 
   add_index "competitors", ["fis_code"], name: "index_competitors_on_fis_code", using: :btree
   add_index "competitors", ["gender", "year"], name: "index_competitors_on_gender_and_year", using: :btree
-
-  create_table "dummy", force: :cascade do |t|
-  end
 
   create_table "races", force: :cascade do |t|
     t.integer  "codex",      limit: 4,               null: false
