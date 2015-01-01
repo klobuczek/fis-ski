@@ -44,6 +44,8 @@ gem 'nokogiri'
 # end
 
 gem "haml"
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem "devise"
 gem "daemons"
 gem "clockwork"

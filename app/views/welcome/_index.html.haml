@@ -2,9 +2,7 @@
 %div{:align => 'left'}
   Previous seasons:
   =render :partial => 'welcome/season', :collection => (Season.fmc_earliest..Season.current.to_i).to_a
-%table
-  -['Men', 'Ladies'].each do |gender|
-    %tr
-      %td
-        ="#{gender}:"
-      =render :partial => 'welcome/age_class', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}
+-['Men', 'Ladies'].each do |gender|
+  %div
+    ="#{gender}:"
+    =render :partial => 'welcome/age_class', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}
