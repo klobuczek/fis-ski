@@ -7,15 +7,15 @@
     Competitors in
     %b bold
     are qualified for the FMC by having finished at least #{season.min_races} races.
-      
+
 -if elimination_phase?
   %p
     -if params[:filter] == 'all'
-      =link_to "hide eliminated", pass_params(:contention), {:title => season_completed? ? 'Shows the final standings' : 'Shows only competitors who still have a chance to complete the required minimum number of races till the end of the season'}    
+      =link_to "hide eliminated", pass_params(:contention), { 'data-toggle' => :tooltip, 'data-original-title' => season_completed? ? 'Shows the final standings' : 'Shows only competitors who still have a chance to complete the required minimum number of races till the end of the season'}
     -else
-      =link_to "show eliminated", pass_params(:all), {:title => "Includes competitors who did not qualify for the FMC"}
+      =link_to "show eliminated", pass_params(:all), { 'data-toggle' => :tooltip, 'data-original-title' => "Includes competitors who did not qualify for the FMC"}
 
-%table
+%table.table.table-condensed.table-hover
   %tr
     %th Rank
     %th FIS Code
@@ -26,4 +26,4 @@
     -if tie_breaker
       %th Race Points Sum
     %th Finishes
-  =render :partial=> 'competitor', :collection => @competitors, :locals => {:tie_breaker => tie_breaker}
+  =render :partial=> 'competitor', :collection => @competitors

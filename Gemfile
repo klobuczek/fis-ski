@@ -47,8 +47,7 @@ gem "haml"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem "devise"
-gem "daemons"
-gem "clockwork"
+gem 'whenever', :require => false
 
 group :development do
 # Use Capistrano for deployment

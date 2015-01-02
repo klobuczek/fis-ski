@@ -1,14 +1,14 @@
 %tr{:style => "font-weight: #{competitor.qualified? ? 'bold' : 'normal'};"}
   %td{:align => :right}
     =competitor.rank
-  %td{:align => :right}
+  %td
     =competitor.fis_code
   %td
     %a{:href => competitor.href}
       =competitor.name
   %td
     =competitor.year
-  %td{:align => :right}
+  %td
     =competitor.nation
   %td{:align => :right}
     =competitor.cup_points
@@ -17,6 +17,4 @@
       -if competitor.tie
         ='%.2f' % competitor.fis_points
   %td
-    %table
-      %tr
-        =render :partial => 'result', :collection => competitor.results, :locals => {:tie => (competitor.tie and tie_breaker)}
+    =render :partial => 'result', :collection => competitor.results, :locals => {:tie => (competitor.tie and tie_breaker)}

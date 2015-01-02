@@ -1,3 +1,0 @@
-describe StandingsController do
-
-end
