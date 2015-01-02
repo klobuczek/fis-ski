@@ -14,6 +14,14 @@ describe CompetitorsHelper, :type => :helper do
     end
 
     it "should be able to call season_completed?" do
+      now = Time.parse("Feb 24 2015")
+      allow(Time).to receive(:now) { now }
+      expect(season_completed?).to be true
+    end
+
+    it "should be able to call season_completed?" do
+      now = Time.parse("Dec 1 2014")
+      allow(Time).to receive(:now) { now }
       expect(season_completed?).to be false
     end
   end

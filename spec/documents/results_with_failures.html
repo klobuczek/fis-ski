@@ -1,144 +1,929 @@
-      <div class="contenu">
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+    <base href="http://data.fis-ski.com/" />
+    <meta name="robots" content="index,follow">
 
-<link rel="stylesheet" href="http://www.fis-ski.com/static/js_plugins/tooltip/css/form-field-tooltip.css" media="screen" type="text/css">
-		<script type="text/javascript" src="http://www.fis-ski.com/static/js_plugins/tooltip/js/rounded-corners.js"></script>
-    	<script type="text/javascript" src="http://www.fis-ski.com/static/js_plugins/tooltip/js/form-field-tooltip.js"></script>
-    	<script type="text/javascript" src="http://www.fis-ski.com/static/js_plugins/jquery-plugins/jtip.js"></script><h1>
-Results&nbsp;<a href="javascript:WindowVisu('http://www.fis-ski.com/cms/impression_page.htm?page_id=0000000610&amp;gab_id=2&amp;URL=/uk/604/610&amp;sector=MA&amp;raceid=1466', 'impression', 'alwaysRaised=yes,dependent=yes,directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=yes,titlebar=yes,toolbar=no,top=50,left=50,width=715,height=450');" OnMouseOver="self.status='Imprimer';return true;" OnMouseOut="self.status='';return true;" title="Imprimer"><img src="static/images/druckansicht.gif" border="0" /></a>
-</h1>
-<script type="text/javascript">
-function fct_affiche_pdf(v_url)
-{
-	if (v_url != 'rien'){
-		w = window.open();
-		w.opener = null;
-		w.document.location = v_url;
-	}
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIS Masters Cup - Men's Slalom  11.04.2014</title>
+    <!--  -->
+    <!-- META -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="google-site-verification" content="JqRNwCza0vKNQQOVnGWNTw_FkP27UUwjhxJTdod_DMQ" />
+    <!-- CSS -->
+    <link rel="shortcut icon" href="static/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/footable.core.min.css" media="print">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/flags.css" media="all">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/ui-lightness.css" media="all">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/front.css" media="all">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/print.css" media="print">
+    <!-- External elements -->
+    <link type="text/css" href="/cache/shared-fis-common.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/fis/front.css" media="all">
+    <link rel="stylesheet" type="text/css" href="static/apps/fis_templates/css/fis/print.css" media="print">
+
+    <!-- JS -->
+    <script src="static/apps/fis_templates/js/jquery.js" type="text/javascript"></script>
+    <script src="static/apps/fis_templates/js/foundation.min.js" type="text/javascript"></script>
+    <script src="static/apps/fis_templates/js/jquery.tooltipster.min.js" type="text/javascript"></script>
+    <script src="static/apps/fis_templates/js/footable.js" type="text/javascript"></script>
+    <script src="static/apps/fis_templates/js/jquery-datepicker.min.js" type="text/javascript"></script>
+    <!--<script src="static/apps/fis_templates/js/jquery.carouFredSel-6.2.1.js" type="text/javascript"></script>-->
+    <script src="static/apps/jquery_plugins/cookie/jquery.cookie.js" type="text/javascript"></script>
+    <script src="static/apps/fis_templates/js/template.js" type="text/javascript"></script>
+
+    <!--<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "7049a95c-04f9-43ee-95ba-1a17f1752e30", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>-->
+
+    <!-- External elements -->
+    <script type="text/javascript" src="/cache/shared-fis-common.min.js" id="10800"></script>
+</head>
+<body class=" ">
+<img id="logo-fis-print" class="print-only" src="static/apps/fis_templates/img/bandeau_print_fis.jpg" alt="Fédération internationale de Ski" />
+<div id="bgimg" class="hide-for-print">
+    <img src="static/apps/fis_templates/img/from-rosablanche-26-04-2014.jpg" alt="" />
+    <div id="bgimg-overlay"></div>
+</div>
+<div id="container">
+    <header class="dcm-fix-common dcm-h stick-it" role="banner"><div class="dcm-r"><div class="dcm-social-dd"><div class="dcm-c dcm-g10 "><div class="dcm-dd-box dcm-dd-noajax dcm-members-login"><a href="#" class="dcm-dd-switch dcm-collapsed js-toggle-trigger"><span class="dcm-dd-txtw"><span class="dcm-dd-txt">Members Section</span></span></a><div class="dcm-dd dcm-remove js-toggle-menu"><div class="dcm-form-wrp"><form class="dcm-form" action="https://data.fis-ski.com/?authentication_page=signin" method="post"><input class="dcm-form-add" type="hidden" value="add" name="todo" /><input type="hidden" name="authentication_signin" value="1" /><fieldset><div class="dcm-r"><label for="login">User</label><input type="text" maxlength="50" value="" class="dcm-form-user-name" name="authentication_public_key" id="authentication_public_key" /></div><div class="dcm-r"><label for="password">Password</label><input type="password" maxlength="50" value="" class="dcm-form-psw" name="authentication_private_key" id="authentication_private_key" /></div><div class="dcm-r"><input class="dcm-form-button" type="submit" value="Login" /></div></fieldset></form></div></div></div></div><div class="header-icons-w"><ul class="dcm-nMaster"><li><a href="http://data.fis-ski.com/global-links/calendar.html" title="Calendar"><span class="dcm-h-ico dcm-h-cal"><span class="dcm-hide">Calendar</span></span></a></li><li><a href="http://data.fis-ski.com/global-links/statistics.html"><span class="dcm-h-ico dcm-h-stats" title="Statistics"><span class="dcm-hide">Statistics</span></span></a></li><li><a href="http://data.fis-ski.com/global-links/all-fis-results.html" title="All FIS results"><span class="dcm-h-ico dcm-h-medal"><span class="dcm-hide">All FIS results</span></span></a></li><li><a href="http://data.fis-ski.com/global-links/search-a-athlete.html" title="Search an Athlete"><span class="dcm-h-ico dcm-h-man"><span class="dcm-hide">Search an Athlete</span></span></a></li></ul></div></div></div><div class="dcm-r  dcm-masthead-w"><div class="dcm-masthead"><div class="dcm-r  "><div class="dcm-c  dcm-headerlogo"><a href="http://www.fis-ski.com/index.html"><span class="dcm-ico dcm-brand"><span class="dcm-hide">FIS</span></span></a><a href="/index.html"><h1 class="dcm-brandName">FIS</h1></a></div><div class="dcm-c  dcm-headersponsor"><div class="dcm-promo dcm-sponsorImg"><a href="http://www.audi.com/com/brand/en.html" target="_blank"><img src="http://www.fis-ski.com/imgml/sponsors/audi_header2.png" /></a></div></div><div class="dcm-c  dcm-headermenu"><nav role="navigation" class="dcm-n dcm-n0 js-menu-level0"><h2 class="dcm-n-btn js-dropdown-lev0"><a href="#"><span class="dcm-n-t">mainmenu</span><span class="dcm-ico dcm-ico-menu"><span class="dcm-hide">open_mainmenu</span></span></a></h2><div class="dcm-js-menu dcm-dropDown"><div class="dcm-dd-box dcm-dd-noajax dcm-dd-search "><a href="#" class="dcm-dd-switch dcm-collapsed js-toggle-trigger"><span class="dcm-dd-txtw"><span class="dcm-ico dcm-ico-lens"> </span><span class="dcm-dd-txt">Search</span></span></a><div class="dcm-dd dcm-remove js-toggle-menu"><form class="dcm-search" action="http://www.fis-ski.com/search/index.html"><div class="dcm-r"><div class="dcm-sbox"><input class="dcm-field" type="search" id="q" name="q" /></div><div class="dcm-sbtn"><input class="dcm-btn" type="submit" value="Search" /></div></div></form></div></div><ul class="dcm-nMaster"><li><a href="http://www.fis-ski.com/news-multimedia/"><span class="dcm-n-txt">NEWS &amp; MULTIMEDIA</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html"><span class="dcm-n-txt"> FIS SOCIAL</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/"><span class="dcm-n-txt">INSIDE FIS  </span></a></li></ul></div></nav></div></div></div></div><div class="dcm-r  "><div class="dcm-popupmobile dcm-remove"><div class="dcm-b"><div class="dcm-bC"><div class="dcm-popupcontent"><a class="dcm-gtm" href="http://mobile.fis-ski.com/uk/mobile/fis-for-mobile.html">Competitions mobile website</a><a class="dcm-closePop" href="#"><span class="dcm-hide">Close</span></a></div></div></div></div></div>
+        <div class="dcm-hpMenu js-menu-level1"><div class="dcm-r  dcm-n1w"><nav class="dcm-n dcm-n1" role="navigation"><div class="dcm-js-menu"><ul class="dcm-nMaster"><li class="sticky-brand-li"><a href="/" class="sticky-brand-w"><img src="http://www.fis-ski.com/imgml/masthead/fis-logo.jpg" alt="FIS SKI" class="sticky-brand" /></a></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/cross-country,/services" data-sector-code="CC"><span class="dcm-n-txt">Cross-Country </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu"><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/cross-country/"><span class="dcm-n-txt">Cross-Country World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/cross-country/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/cross-country/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/cross-country/leader-board">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/cross-country/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/cross-country/extra/media-guide.html">Media Guide</a></li><li><a href="http://www.fis-ski.com/cross-country/extra/team-info.html">Team Info</a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors</a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media</a></li> </ul></div></div><div class="dcm-submenu-col2"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=CC"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/cross-country/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/cross-country/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/cross-country/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/cross-country/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/cross-country/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/cross-country/index.html#deeplink=rules">Rules / Homologations</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/cross-country/results.html">Results</a></li><li><a href="http://data.fis-ski.com/cross-country/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/cross-country/brand-ranking.html">Brand ranking</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/ski-jumping,/services" data-sector-code="JP"><span class="dcm-n-txt">Ski Jumping </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu"><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/ski-jumping/"><span class="dcm-n-txt">Ski Jumping World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/ski-jumping/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/ski-jumping/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/ski-jumping/athletes/">World Cup Athletes</a></li><li><a href="http://www.fis-ski.com/ski-jumping/leader-board/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/ski-jumping/index.html">Rules</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/ski-jumping/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors</a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div><div class="dcm-submenu-col2"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=JP"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/ski-jumping/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/ski-jumping/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/ski-jumping/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/ski-jumping/index.html#deeplink=rules">Rules</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/ski-jumping/results.html">Results</a></li><li><a href="http://data.fis-ski.com/ski-jumping/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/ski-jumping/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/nordic-combined,/services" data-sector-code="NK"><span class="dcm-n-txt">Nordic Combined </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu"><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/nordic-combined/"><span class="dcm-n-txt">Nordic Combined World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/nordic-combined/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/nordic-combined/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/nordic-combined/leader-board/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/nordic-combined/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/nordic-combined/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/nordic-combined/extra/media-guide.html">Media Guide</a></li><li><a href="http://www.fis-ski.com/nordic-combined/extra/faq.html">FAQ</a></li><li><a href="http://www.fis-ski.com/nordic-combined/extra/olympics.html">Olympics</a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors</a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media</a></li> </ul></div></div><div class="dcm-submenu-col2"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=NK"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/nordic-combined/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/nordic-combined/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/nordic-combined/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/nordic-combined/index.html#deeplink=rules">Rules</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/nordic-combined/results.html">Results</a></li><li><a href="http://data.fis-ski.com/nordic-combined/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/nordic-combined/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/alpine-skiing,/services" data-sector-code="AL"><span class="dcm-n-txt">Alpine Skiing </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu"><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/alpine-skiing/"><span class="dcm-n-txt">Alpine Skiing World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/alpine-skiing/events-and-places/calendar">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/alpine-skiing/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/alpine-skiing/leader-board/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/alpine-skiing/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://www.fis-ski.com/alpine-skiing/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/alpine-skiing/extra/media.html">Media</a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors</a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media</a></li> </ul></div></div><div class="dcm-submenu-col2"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=AL"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/alpine-skiing/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/prize-money-ranking.html">Prize money ranking</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/homologations.html">Homologations</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/alpine-skiing/results.html">Results</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/brand-ranking.html">Brand ranking</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/alpine-skiing/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/alpine-skiing/index.html#deeplink=rules">Rules</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/freestyle-skiing,/services" data-sector-code="FS"><span class="dcm-n-txt">Freestyle Skiing </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu dcm-sub-extended"><div class="dcm-submenu-col1 dcm-xpanded-column"><nav class="dcm-fis-submenu dcm-sub-extended" role="navigation"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/freestyle-skiing/"><span class="dcm-n-txt">Freestyle Ski World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/freestyle-skiing/moguls-aerials/">Moguls &amp; Aerials</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/moguls-aerials/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/moguls-aerials/events-and-places/calendar">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/moguls-aerials/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/moguls-aerials/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/">Halfpipe &amp; Slopestyle</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/events-and-places/calendar">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/leader-board/halfpipe/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/halfpipe-slopestyle/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/">Ski Cross World Cup</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/events-and-places/calendar">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/leader-board/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/ski-cross/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-bottom dcm-cf"><ul class="dcm-links-bottom-list"><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">Sponsors </a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors </a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media </a></li></ul></div></nav></div><div class="dcm-submenu-col2 dcm-collaped-column"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=FS"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/freestyle-skiing/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/freestyle-skiing/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/freestyle-skiing/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/freestyle-skiing/index.html">Rules</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/freestyle-skiing/results.html">Results</a></li><li><a href="http://data.fis-ski.com/freestyle-skiing/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/freestyle-skiing/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/freestyle-skiing/fis-points-lists.html">FIS points lists</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/snowboard,/services" data-sector-code="SB"><span class="dcm-n-txt">Snowboard </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu dcm-sub-extended"><div class="dcm-submenu-col1 dcm-xpanded-column"><nav class="dcm-fis-submenu dcm-sub-extended" role="navigation"><h4 class="dcm-links-list-h dcm-micro"><a href="http://www.fis-ski.com/snowboard/"><span class="dcm-n-txt">Snowboard World Cup </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/snowboard/cross/">Snowboard Cross</a></li><li><a href="http://www.fis-ski.com/snowboard/cross/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/snowboard/cross/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/snowboard/cross/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/snowboard/cross/leader-board/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/snowboard/cross/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/">Alpine Snowboard</a></li><li><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/leader-board/psl/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/snowboard/alpine-snowboard/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li class="dcm-first-link"><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/">Snowboard Freestyle</a></li><li><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/news-multimedia/">News &amp; Multimedia</a></li><li><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/events-and-places/calendar/">World Cup Calendar</a></li><li><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/events-and-places/results/">World Cup Results</a></li><li><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/leader-board/halfpipe/">World Cup Leaderboards</a></li><li><a href="http://www.fis-ski.com/snowboard/freestyle-snowboard/athletes/">World Cup Athletes</a></li> </ul></div><div class="dcm-links-bottom dcm-cf"><ul class="dcm-links-bottom-list"><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/">World Cup Sponsors </a></li><li><a href="http://www.fis-ski.com/inside-fis/social-media-hub/index.html">Social Media </a></li></ul></div></nav></div><div class="dcm-submenu-col2 dcm-collaped-column"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=SB"><span class="dcm-n-txt">All FIS Competitions </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/snowboard/calendar.html">Calendar</a></li><li><a href="http://data.fis-ski.com/snowboard/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/snowboard/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a></li><li><a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/snowboard/results.html">Results</a></li><li><a href="http://data.fis-ski.com/snowboard/live-timing.html">Live timing</a></li><li><a href="http://data.fis-ski.com/snowboard/statistics.html">Statistics</a></li><li><a href="http://data.fis-ski.com/snowboard/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/snowboard/index.html#deeplink=rules">Rules</a></li> </ul></div></div></nav></div></li><li><a class="js-sub-menu-trigger dcm-sub-menu-link dcm-link-disabled" href="" data-section-hint="/speed-skiing,/grass-skiing,/telemark,/masters" data-sector-code="MA,TM,SS,GS"><span class="dcm-n-txt">Other Disciplines </span><span class="dcm-arrow-down"> </span></a><div class="dcm-sub-menu js-sub-menu"><nav role="navigation" class="dcm-fis-submenu dcm-sub-more"><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=SS"><span class="dcm-n-txt">Speed Skiing </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/speed-skiing/home.html">Calendar</a></li><li><a href="http://data.fis-ski.com/speed-skiing/results.html">Results</a></li><li><a href="http://data.fis-ski.com/speed-skiing/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/speed-skiing/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/speed-skiing/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/speed-skiing/index.html#deeplink=rules">Rules</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=GS"><span class="dcm-n-txt">Grass Skiing </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/grass-skiing/home.html">Calendar</a></li><li><a href="http://data.fis-ski.com/grass-skiing/results.html">Results</a></li><li><a href="http://data.fis-ski.com/grass-skiing/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/grass-skiing/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/grass-skiing/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/grass-skiing/index.html#deeplink=rules">Rules</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=TM"><span class="dcm-n-txt">Telemark </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/telemark/home.html">Calendar</a></li><li><a href="http://data.fis-ski.com/telemark/results.html">Results</a></li><li><a href="http://data.fis-ski.com/telemark/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/telemark/biographies.html">Biographies</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/telemark/index.html#deeplink=rules">Rules</a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a></li> </ul></div></div><div class="dcm-submenu-col1"><h4 class="dcm-links-list-h dcm-micro"><a href="http://data.fis-ski.com/?sector_search=MA"><span class="dcm-n-txt">Masters </span></a></h4><div class="dcm-links-list-w"><ul class="dcm-links-list"><li><a href="http://data.fis-ski.com/masters/home.html">Calendar</a></li><li><a href="http://data.fis-ski.com/masters/results.html">Results</a></li><li><a href="http://data.fis-ski.com/masters/cup-standings.html">Cup standings</a></li><li><a href="http://data.fis-ski.com/masters/biographies.html">Biographies</a></li><li><a href="http://data.fis-ski.com/masters/fis-points-lists.html">FIS points lists</a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/masters/index.html#deeplink=rules">Rules</a></li> </ul></div></div></nav></div></li></ul></div></nav></div></div>
+    </header>
+    <div id="header_mobile" class="hide-for-print">
+        <div id="menu" class="hide-for-print">
+
+            <!-- Device detection -->
+            <div class="desktop"></div>
+            <div class="mobile"></div>
+
+            <div class="row">
+                <ul id="menu_main" class="row">
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Cross-Country">
+                            Cross-Country                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/brand-ranking.html">Brand ranking</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/cross-country/fis-points-lists.html">FIS points lists</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/cross-country/index.html#deeplink=rules">Rules / Homologations</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Ski Jumping">
+                            Ski Jumping                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/ski-jumping/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/ski-jumping/index.html#deeplink=rules">Rules</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Nordic Combined">
+                            Nordic Combined                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/nordic-combined/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/nordic-combined/index.html#deeplink=rules">Rules</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Alpine Skiing">
+                            Alpine Skiing                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/brand-ranking.html">Brand ranking</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/prize-money-ranking.html">Prize money ranking</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/fis-points-lists.html">FIS points lists</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/alpine-skiing/homologations.html">Homologations</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/alpine-skiing/index.html#deeplink=rules">Rules</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Freestyle Skiing">
+                            Freestyle Skiing                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/freestyle-skiing/fis-points-lists.html">FIS points lists</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/freestyle-skiing/index.html">Rules</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0">
+
+                        <a rel="nofollow" class="alvl0" title="Snowboard">
+                            Snowboard                    <span class="fleche_menu"></span>
+                            <span class="border"></span>
+                        </a>
+                                    <span class="arrow close">
+                        <span class="sprite_corner"></span>
+                    </span>
+                        <div class="submenu">
+                            <ul class="submenu_list">
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/calendar.html">Calendar</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/results.html">Results</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/cup-standings.html">Cup standings</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/live-timing.html">Live timing</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/biographies.html">Biographies</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/statistics.html">Statistics</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/services/timing-and-data/timing-and-data.html">Timing / data</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/snowboard/fis-points-lists.html">FIS points lists</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://data.fis-ski.com/special/youth-olympic-winter-games-quotas.html">Youth Olympic Games</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/document-library/snowboard/index.html#deeplink=rules">Rules</a>
+                                </li>
+                                <li class="lvl1">
+                                    <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="lvl0 other"><a rel="nofollow"  class="active" title="More FIS disciplines">
+                        More<span class="icon_other sprite_menu"></span><span class="fleche_menu"></span></a><span class="arrow close"><span class="sprite_corner"></span></span><div class="submenu">
+                        <div class="subother"><span>Speed Skiing</span><ul class="submenu_list">        <li class="lvl1">
+                            <a href="http://data.fis-ski.com/speed-skiing/home.html">Calendar</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://data.fis-ski.com/speed-skiing/results.html">Results</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://data.fis-ski.com/speed-skiing/cup-standings.html">Cup standings</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://data.fis-ski.com/speed-skiing/biographies.html">Biographies</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://data.fis-ski.com/speed-skiing/fis-points-lists.html">FIS points lists</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://www.fis-ski.com/inside-fis/document-library/speed-skiing/index.html#deeplink=rules">Rules</a>
+                        </li>        <li class="lvl1">
+                            <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                        </li></ul></div><div class="subother"><span>Grass Skiing</span><ul class="submenu_list">        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/grass-skiing/home.html">Calendar</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/grass-skiing/results.html">Results</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/grass-skiing/cup-standings.html">Cup standings</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/grass-skiing/biographies.html">Biographies</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/grass-skiing/fis-points-lists.html">FIS points lists</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://www.fis-ski.com/inside-fis/document-library/grass-skiing/index.html#deeplink=rules">Rules</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                    </li></ul></div><div class="subother"><span>Telemark</span><ul class="submenu_list">        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/telemark/home.html">Calendar</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/telemark/results.html">Results</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/telemark/cup-standings.html">Cup standings</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/telemark/biographies.html">Biographies</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://www.fis-ski.com/inside-fis/document-library/telemark/index.html#deeplink=rules">Rules</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://www.fis-ski.com/inside-fis/about/fis-structure/technical-officials/index.html">Technical Officials</a>
+                    </li></ul></div><div class="subother"><span>Masters</span><ul class="submenu_list">        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/masters/home.html">Calendar</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/masters/results.html">Results</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/masters/cup-standings.html">Cup standings</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/masters/biographies.html">Biographies</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://data.fis-ski.com/masters/fis-points-lists.html">FIS points lists</a>
+                    </li>        <li class="lvl1">
+                        <a href="http://www.fis-ski.com/inside-fis/document-library/masters/index.html#deeplink=rules">Rules</a>
+                    </li></ul></div>          </div></li>
+                </ul>
+                <ul id="menu_other" class="row">
+                    <li>
+                        <a class="tooltip" title="calendar" href="http://data.fis-ski.com/global-links/calendar.html">
+                            <span class="sprite_menu menu_calendar"></span>
+                            <span class="label_menu">Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip" title="statistic" href="http://data.fis-ski.com/global-links/statistics.html">
+                            <span class="sprite_menu menu_statistic"></span>
+                            <span class="label_menu">Statistic</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip" title="results" href="http://data.fis-ski.com/global-links/all-fis-results.html">
+                            <span class="sprite_menu menu_classement"></span>
+                            <span class="label_menu">Results</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip" title="competitor" href="http://data.fis-ski.com/global-links/search-a-athlete.html">
+                            <span class="sprite_menu menu_competitor"></span>
+                            <span class="label_menu">Competitor</span>
+                        </a>
+                    </li>
+                </ul></div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns">
+
+                <div class="actions">
+                    <div class="boxes">
+
+                        <div class="member_box">
+                            <span class="btn_action">Member Section</span>
+                            <div class="member_inputs">
+                                <form method="post" action="http://member.fis-ski.com/membersection/councilmembersection/comments.html">
+                                    <input type="hidden" name="todo" value="add" class="dcm-form-add">
+                                    <label for="member-login">User</label>
+                                    <input type="text" name="login" id="member-login" value="" />
+                                    <label for="member-password">Password</label>
+                                    <input type="password" name="password" id="member-password" value="" />
+                                    <input type="submit" value="Login" />
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="share_box">
+                            <div class="lien">
+                                <a class="lien" href="http://www.fis-ski.com/" target="_blank">www.fis-ski.com</a>
+                            </div>
+                            <div class="sharewrapper">
+                                <a href="#" class="share">
+    <span class="dcm-dd-txtw">
+        <span class="ico-social sprite_corner"></span>
+        <span class="dcm-dd-txt">Share </span>
+    </span>
+                                </a>
+                                <div class="shareListe">
+                                    <span class='st_facebook_hcount' displayText='Facebook'></span>
+                                    <span class='st_twitter_hcount' displayText='Tweet'></span>
+                                    <span class='st_googleplus_hcount' displayText='Google +'></span>
+                                    <!--<div class="dcm-addthise">
+                                        <div class="dcm-social-custom dcm-fb"> TODO ::
+                                            <div fb-xfbml-state="rendered" class="fb-like fb_edge_widget_with_comment fb_iframe_widget"
+                                                 data-href="http://datas.fis.ski.comhttps://www.facebook.com/fis-ski" data-send="false"
+                                                 data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"><span
+                                                    style="height: 20px; width: 76px;"><iframe
+                                                        src="http://www.facebook.com/plugins/like.php?api_key=&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D27%23cb%3Df1db54b0691c24%26domain%3Ddatas.fis.ski.com%26origin%3Dhttp%253A%252F%252Fdatas.fis.ski.com%252Ff17ab3f41f0a50c%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;font=verdana&amp;href=http%3A%2F%2Fdatas.fis.ski.comhttps%3A%2F%2Fwww.facebook.com%2Ffis-ski&amp;layout=button_count&amp;locale=en_US&amp;node_type=link&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"
+                                                        class="fb_ltr" title="Like this content on Facebook."
+                                                        style="border: medium none; overflow: hidden; height: 20px; width: 76px;" name="f10f5c72727f7c8"
+                                                        id="f3e00518f481a54" scrolling="no"></iframe></span></div>
+                                        </div>
+                                        <div class="dcm-social-custom dcm-tw">
+                                            <iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 106px; height: 20px;"
+                                                    class="twitter-share-button twitter-count-horizontal"
+                                                    src="http://platform.twitter.com/widgets/tweet_button.1380141200.html#_=1380181404912&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fdatas.fis.ski.com%2Findex.html&amp;size=m&amp;text=FIS-Ski&amp;url=https%3A%2F%2Ftwitter.com%2Ffis-ski"
+                                                    allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                                        </div>
+                                        <div id="___plusone_0"
+                                             style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;">
+                                            <iframe title="+1" data-gapiattached="true"
+                                                    src="https://apis.google.com/u/0/_/+1/fastbutton?bsv=o&amp;usegapi=1&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fdatas.fis.ski.com&amp;url=http%3A%2F%2Fen.dynamic.staging.fis.deltatre.com%2Findex.html&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.fr.2whnVQmuXl0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTMpnKHCLK5J4Gw0MQyQ_Ndt6dAfrA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1380181404928&amp;parent=http%3A%2F%2Fdatas.fis.ski.com&amp;pfname=&amp;rpctoken=37821226"
+                                                    name="I0_1380181404928" id="I0_1380181404928" vspace="0" tabindex="0"
+                                                    style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;"
+                                                    marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe>
+                                        </div>
+                                    </div>-->
+                                </div>	                </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="fond"></div>
+                <a id="logo" href="http://data.fis-ski.com/">
+                    <img src="static/apps/fis_templates/img/logo_mobile.png" alt="All FIS Ski and Snowboard Competition data / stats" title="All FIS Ski and Snowboard Competition data / stats"/>
+                </a>
+                <a href="#" class="btn_nav"></a>
+            </div>
+        </div>        </div>
+    <div id="main">
+        <div class="row hide-for-print" id="row_print">
+            <a id="btn_print" href="#" onclick="window.print(); return false;"><img src="static/apps/fis_templates/img/print.png" alt="Print" /></a>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+
+                <div class="bloc-tab">
+                    <h2 class="bloc-title"><div class="blue_bottom_left sprite_corner"></div>OFFICIAL RESULTS</h2>
+                    <div class="padding-content">
+                        <h3>
+                            <a href="http://data.fis-ski.com/global-links/statistics/overview-top-ranked-in-all-competitions.html?&category=FMC&sector=MA&place=Abetone&gender=ALL">Abetone</a>
+                            (ITA)        <span class="right">11.04.2014</span>
+                        </h3>
+                        <div class="row">
+                            <div class="small-12 large-8 columns">
+                                <h4>
+                                    FIS Masters Cup - Men's Slalom             </h4>
+                            </div>
+                            <div class="small-12 large-4 columns">
+                                <div class="right text-right">Race codex : 0083                <br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<br />
+                    <div class="row formpage">
+                        <div class="small-12 large-8 columns">
+                        </div>
+                        <div class="small-12 large-4 columns">
+                            <div class="row">
+                                <div class="small-4 large-4 columns text-right">
+                                        </div>
+                                <div class="small-8 large-8 columns text-right">-->
+                        <div class="right formpage" style="padding:0">
+                            <b>1 files available</b> <div class="dlPdfRace sprite-tab show-menu-dl valign-middle"><div class="pdfContainer">
+                            <a href="http://data.fis-ski.com/pdf/2014/MA/0083/2014MA0083PROG.pdf" target="_blank">Race Program (24.64 kb)</a>
+                        </div></div>
+
+                        </div>
+                        <br /><br /><br />
+                        <!--</div>
+                    </div>
+                    </div>-->
+
+                        <div id="more-info-results">
+
+                            <div class="row pad-bottom">
+                                <div class="large-4 small-12 columns">
+
+                                </div>
+                                <div class="large-4 small-12 columns">
+                                    <table cellspacing="0" cellpadding="0" class="footable table-datas table-withpadding">
+
+                                        <tr>
+                                            <td class="noborder">TD FIS</td>
+                                            <td >GUT MARCO                                 <br />                            </td>
+                                            <td >SUI                            <br />                            </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <div class="large-4 small-12 columns">
+                                </div>
+                            </div>
+
+                            <div class="row pad-bottom">
+                                <div class="large-4 small-12 columns">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="" class="more bloc-title" id="show-more-info-results">
+                            <span id="btn-label">Show more info</span><span class="fleche">»</span>
+                            <span class="sprite_corner yellow_top_right"></span>
+                        </a>
+
+                    </div>
+                    <!--
+        <script type="text/javascript">
+            var tooltipObj = new DHTMLgoodies_formTooltip();
+            tooltipObj.setTooltipPosition('right');
+            tooltipObj.setPageBgColor('#EEEEEE');
+            tooltipObj.setTooltipCornerSize(15);
+            tooltipObj.initFormFieldTooltip();
+        </script>
+        -->
+                </div>
+
+                <div class="bloc-tab">
+                    <h2 class="bloc-title"><div class="blue_bottom_left sprite_corner"></div>Competitors</h2>
+                    <div class="row">
+                        <form method="get" action="http://data.fis-ski.com/dynamic/results.html" name="formfilter" id="filterForm">
+                            <input type="hidden" name="sector" id="sector" value="MA"/>
+                            <input type="hidden" name="raceid" id="raceid" value="2022"/>
+
+                            <div class="small-12 large-4 columns">
+                                <div class="row">
+                                    <div class="small-4 large-4 columns">
+                                        <label for="nationcode" class="inline">Nation : </label>
+                                    </div>
+                                    <div class="small-8 large-8 columns">
+                                        <input type="text" onchange="this.value=this.value.toUpperCase();" name="nationcode" id="nationcode" value="" title="Enter one or more Nation code: Exemple 1: SUI Exemple 2: SUI,FRA,ITA<br />" placeholder="SUI or SUI,FRA,ITA" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 large-4 columns">
+                                <div class="row">
+                                    <div class="small-4 large-4 columns">
+                                        <label for="birthyear" class="inline">Year of birth : </label>
+                                    </div>
+                                    <div class="small-8 large-8 columns">
+                                        <input name="birthyear" type="text" id="birthyear" value="" title="Enter one or more year of birth Exemple 1: 80 Exemple 2: 80,82,85 Exemple 3: 85-90" placeholder="80 or 80,82,85" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 large-4 columns">
+                                <div class="row">
+                                    <div class="small-4 large-4 columns">
+                                        <label for="category" class="inline">Age Category :</label>
+                                    </div>
+                                    <div class="small-8 large-8 columns">
+                                        <select onchange="this.form.submit();" name="catage" id="catage">
+                                            <option value="">ALL</option>
+                                            <option value="3" >15 - 19</option>
+                                            <option value="6" >30 - 34</option>
+                                            <option value="7" >35 - 39</option>
+                                            <option value="8" >40 - 44</option>
+                                            <option value="9" >45 - 49</option>
+                                            <option value="10" >50 - 54</option>
+                                            <option value="11" >55 - 59</option>
+                                            <option value="12" >60 - 64</option>
+                                            <option value="13" >65 - 69</option>
+                                            <option value="14" selected>70 - 74</option>
+                                            <option value="15" >75 - 79</option>
+                                            <option value="16" >80 - 84</option>
+                                            <option value="17" >85 - 89</option>
+                                            <option value="18" >90 - 94</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Filter" class="small button" />
+                            </div>
+                        </form>
+
+                        <a href="" class="more bloc-title show-for-small" id="show-form-filter-btn">
+                            <span id="btn-label-filter">Display filter form</span>
+                        </a>
+
+                    </div>
+
+                    <table cellspacing="0" cellpadding="0" class="footable table-datas table-withpadding">
+                        <thead>
+                        <tr>
+                            <th class="nobg">Rank</th>
+                            <th>Bib</th>
+                            <th data-hide="phone">FIS Code</th>
+                            <th>Name</th>
+                            <th>Year</th>
+                            <!--th></th-->
+                            <th>Nation</th>
+
+                            <th data-hide='phone'>Total Time</th>
+                            <th data-hide='phone'>Diff.</th>
+                            <th data-hide='phone'>FIS Points</th>
+                            <th data-hide='phone'>Cup Points</th>
+                        </tr>
+                        </thead>        <tbody>
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;1</td>
+                        <td class='i0' align='right'>&nbsp;138</td>
+                        <td class='i0' align='right'>&nbsp;5050216</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=83710&type=result">MAERZENDORFER Leo</a>&nbsp;</td>
+                        <td class='i0' align='center'>1941&nbsp;</td>
+                        <td class='i0' align='center'>AUT&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;1:54.74</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;68.80</td>
+                        <td class='i0' align='right'>&nbsp;50.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i1' align='right'>&nbsp;2</td>
+                        <td class='i1' align='right'>&nbsp;139</td>
+                        <td class='i1' align='right'>&nbsp;5290800</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87228&type=result">SORARU Giordano</a>&nbsp;</td>
+                        <td class='i1' align='center'>1940&nbsp;</td>
+                        <td class='i1' align='center'>ITA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;1:57.31</td>
+                        <td class='i1' align='right'>&nbsp;+2.57</td>
+                        <td class='i1' align='right'>&nbsp;84.22</td>
+                        <td class='i1' align='right'>&nbsp;40.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;3</td>
+                        <td class='i0' align='right'>&nbsp;143</td>
+                        <td class='i0' align='right'>&nbsp;5420025</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=90108&type=result">AURMO Kjell</a>&nbsp;</td>
+                        <td class='i0' align='center'>1942&nbsp;</td>
+                        <td class='i0' align='center'>NOR&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;1:58.39</td>
+                        <td class='i0' align='right'>&nbsp;+3.65</td>
+                        <td class='i0' align='right'>&nbsp;90.71</td>
+                        <td class='i0' align='right'>&nbsp;30.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i1' align='right'>&nbsp;4</td>
+                        <td class='i1' align='right'>&nbsp;142</td>
+                        <td class='i1' align='right'>&nbsp;5200559</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=86205&type=result">ANGELE Heinz</a>&nbsp;</td>
+                        <td class='i1' align='center'>1943&nbsp;</td>
+                        <td class='i1' align='center'>GER&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;1:59.69</td>
+                        <td class='i1' align='right'>&nbsp;+4.95</td>
+                        <td class='i1' align='right'>&nbsp;98.51</td>
+                        <td class='i1' align='right'>&nbsp;24.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;5</td>
+                        <td class='i0' align='right'>&nbsp;145</td>
+                        <td class='i0' align='right'>&nbsp;5290822</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87249&type=result">PERNTER Erich</a>&nbsp;</td>
+                        <td class='i0' align='center'>1943&nbsp;</td>
+                        <td class='i0' align='center'>ITA&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;2:03.32</td>
+                        <td class='i0' align='right'>&nbsp;+8.58</td>
+                        <td class='i0' align='right'>&nbsp;120.30</td>
+                        <td class='i0' align='right'>&nbsp;22.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i1' align='right'>&nbsp;6</td>
+                        <td class='i1' align='right'>&nbsp;140</td>
+                        <td class='i1' align='right'>&nbsp;5190460</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=90573&type=result">LARCHEY-WENDLING Michel</a>&nbsp;</td>
+                        <td class='i1' align='center'>1942&nbsp;</td>
+                        <td class='i1' align='center'>FRA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;2:03.87</td>
+                        <td class='i1' align='right'>&nbsp;+9.13</td>
+                        <td class='i1' align='right'>&nbsp;123.60</td>
+                        <td class='i1' align='right'>&nbsp;20.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;7</td>
+                        <td class='i0' align='right'>&nbsp;141</td>
+                        <td class='i0' align='right'>&nbsp;5050428</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=83839&type=result">GALLOB Heinz</a>&nbsp;</td>
+                        <td class='i0' align='center'>1939&nbsp;</td>
+                        <td class='i0' align='center'>AUT&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;2:04.15</td>
+                        <td class='i0' align='right'>&nbsp;+9.41</td>
+                        <td class='i0' align='right'>&nbsp;125.28</td>
+                        <td class='i0' align='right'>&nbsp;18.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i1' align='right'>&nbsp;8</td>
+                        <td class='i1' align='right'>&nbsp;146</td>
+                        <td class='i1' align='right'>&nbsp;5291139</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=121391&type=result">GIOVANARDI Claudio</a>&nbsp;</td>
+                        <td class='i1' align='center'>1939&nbsp;</td>
+                        <td class='i1' align='center'>ITA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;2:06.05</td>
+                        <td class='i1' align='right'>&nbsp;+11.31</td>
+                        <td class='i1' align='right'>&nbsp;136.69</td>
+                        <td class='i1' align='right'>&nbsp;16.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;9</td>
+                        <td class='i0' align='right'>&nbsp;144</td>
+                        <td class='i0' align='right'>&nbsp;5290678</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87106&type=result">PUCA Gianfredo</a>&nbsp;</td>
+                        <td class='i0' align='center'>1941&nbsp;</td>
+                        <td class='i0' align='center'>ITA&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;2:09.49</td>
+                        <td class='i0' align='right'>&nbsp;+14.75</td>
+                        <td class='i0' align='right'>&nbsp;157.34</td>
+                        <td class='i0' align='right'>&nbsp;14.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i1' align='right'>&nbsp;10</td>
+                        <td class='i1' align='right'>&nbsp;147</td>
+                        <td class='i1' align='right'>&nbsp;5290712</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87140&type=result">COLZI Carlo Alberto</a>&nbsp;</td>
+                        <td class='i1' align='center'>1941&nbsp;</td>
+                        <td class='i1' align='center'>ITA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;2:18.13</td>
+                        <td class='i1' align='right'>&nbsp;+23.39</td>
+                        <td class='i1' align='right'>&nbsp;209.21</td>
+                        <td class='i1' align='right'>&nbsp;12.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr><td colspan='11' class='t'>Disqualified</td></tr><tr class="tr-sep"><td colspan="12"></td></tr><tr>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;150</td>
+                        <td class='i0' align='right'>&nbsp;5290884</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87307&type=result">LEPORATTI Ivo</a>&nbsp;</td>
+                        <td class='i0' align='center'>1941&nbsp;</td>
+                        <td class='i0' align='center'>ITA&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;0.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr><td colspan='11' class='t'>Did not start</td></tr><tr class="tr-sep"><td colspan="12"></td></tr><tr>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;149</td>
+                        <td class='i1' align='right'>&nbsp;5290829</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=87256&type=result">BARTOLOMEI Floriano</a>&nbsp;</td>
+                        <td class='i1' align='center'>1939&nbsp;</td>
+                        <td class='i1' align='center'>ITA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;0.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;137</td>
+                        <td class='i0' align='right'>&nbsp;5050257</td>
+                        <td class='i0'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=83722&type=result">LEITNER Leonhard</a>&nbsp;</td>
+                        <td class='i0' align='center'>1942&nbsp;</td>
+                        <td class='i0' align='center'>AUT&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;</td>
+                        <td class='i0' align='right'>&nbsp;0.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr><td colspan='11' class='t'>Did not finish</td></tr><tr class="tr-sep"><td colspan="12"></td></tr><tr>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;148</td>
+                        <td class='i1' align='right'>&nbsp;5290037</td>
+                        <td class='i1'><a href="http://data.fis-ski.com/dynamic/athlete-biography.html?sector=MA&competitorid=86568&type=result">CHIULLI Sergio</a>&nbsp;</td>
+                        <td class='i1' align='center'>1940&nbsp;</td>
+                        <td class='i1' align='center'>ITA&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;</td>
+                        <td class='i1' align='right'>&nbsp;0.00</td>
+                    </tr>
+                    <!--<tr class="tr-sep"><td colspan="12"></td></tr>-->
+
+                    <tr class="tr-sep"><td colspan="12"></td></tr>
+                    </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>        </div>
+    <footer class="dcm-fix-common dcm-f" role="contentinfo"><div class="dcm-fW"><div class="dcm-r  dcm-footerLinks"><div class="dcm-c dcm-g4 dcm-killPrint"><article class="dcm-article dcm-fisInfoDetails dcm-articlePage"><div class="dcm-printWrap"><a class="dcm-printIco" href="#" onclick="window.print();return false;"><span class="dcm-ico dcm-ico-print"> </span><span class="dcm-dd-txtw">Print</span></a></div><div class="dcm-promo"><img src="http://www.fis-ski.com/imgml/fis/fislogo.png" alt="FIS" /> </div><div class="dcm-mainSection"><p><div  class="fis-contacts">
+        <p class="fis-contacts">
+            Copyright&nbsp;&nbsp;&copy; FIS. All rights reserved. </p><p>
+        <p class="fis-contacts"><a href="http://www.fis-ski.com/inside-fis/about/term-of-use/index.html">Term of Use</a> <a href="http://www.fis-ski.com/inside-fis/about/contact-us/index.html">Contact FIS</a>&nbsp;<a href="http://mobile.fisski.com" target="_blank">FIS MOBILE</a> </p><p>
+    </div> </p> </div></article>
+    </div><div class="dcm-c dcm-g8 "><div class="dcm-Footer"><nav role="navigation" class="dcm-n dcm-nf"><h2
+            class="dcm-n-btn"
+            ></h2><div class="dcm-js-menu"><ul class="dcm-nMaster"><li><span class=" dcm-collapsed"><span class="dcm-n-txt">About FIS  </span></span> <div class="dcm-nF dcm-remove dcm-l0"><div class="dcm-n-wrp"><ul class="dcm-n0F"> <li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/"><span class="dcm-n-txt">Organisation</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/about/fis-structure/athletes-commission/"><span class="dcm-n-txt">Athletes' Commission</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/document-library/"><span class="dcm-n-txt">Rules</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/medical-antidoping/anti-doping/"><span class="dcm-n-txt">Anti-Doping  </span></a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/marketing/official-sponsors/"><span class="dcm-n-txt">Partners</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/events-and-services/fis-meetings/"><span class="dcm-n-txt">Meetings  </span></a></li><li><a href="http://www.fis-ski.com/inside-fis/about/contact-us/"><span class="dcm-n-txt">Contact</span></a></li><li><a href="http://data.fis-ski.com/dynamic/abbreviations.html"><span class="dcm-n-txt">Abbreviations</span></a></li></ul></div> </div></li><li><span class=" dcm-collapsed"><span class="dcm-n-txt">Olympic Disciplines</span></span> <div class="dcm-nF dcm-remove dcm-l0"><div class="dcm-n-wrp"><ul class="dcm-n0F"> <li><a href="http://www.fis-ski.com/cross-country/"><span class="dcm-n-txt">Cross-Country  </span></a></li><li><a href="http://www.fis-ski.com/ski-jumping/"><span class="dcm-n-txt">Ski Jumping  </span></a></li><li><a href="http://www.fis-ski.com/nordic-combined/"><span class="dcm-n-txt">Nordic Combined  </span></a></li><li><a href="http://www.fis-ski.com/alpine-skiing/"><span class="dcm-n-txt">Alpine Skiing</span></a></li><li><a href="http://www.fis-ski.com/freestyle-skiing/"><span class="dcm-n-txt">Freestyle Skiing  </span></a></li><li><a href="http://www.fis-ski.com/snowboard/"><span class="dcm-n-txt">Snowboard  </span></a></li></ul></div> </div></li><li><span class=" dcm-collapsed"><span class="dcm-n-txt">Competitions</span></span> <div class="dcm-nF dcm-remove dcm-l0"><div class="dcm-n-wrp"><ul class="dcm-n0F"> <li><a href="http://data.fis-ski.com/global-links/calendar.html"><span class="dcm-n-txt">Calendar</span></a></li><li><a href="http://data.fis-ski.com/global-links/all-fis-results.html"><span class="dcm-n-txt">Results</span></a></li><li><a href="http://data.fis-ski.com/global-links/search-a-athlete.html"><span class="dcm-n-txt">Biographies</span></a></li></ul></div> </div></li><li><span class=" dcm-collapsed"><span class="dcm-n-txt">News Center</span></span> <div class="dcm-nF dcm-remove dcm-l0"><div class="dcm-n-wrp"><ul class="dcm-n0F"> <li><a href="http://www.fis-ski.com/news-multimedia/"><span class="dcm-n-txt">News</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/communication/"><span class="dcm-n-txt">Media</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/communication/press-release/"><span class="dcm-n-txt">Press Releases</span></a></li><li><a href="http://www.fis-ski.com/newsletter/register.html"><span class="dcm-n-txt">Newsletter Subscription</span></a></li><li><a href="http://www.fis-ski.com/inside-fis/marketing-and-communication/communication/fis-ids-for-media/"><span class="dcm-n-txt">Accreditation</span></a></li><li><a href="http://www.fis-ski.com/news-multimedia/rss/"><span class="dcm-n-txt">RSS Feeds</span></a></li></ul></div> </div></li></ul></div></nav></div></div> </div>
+    </div></footer>
+</div>
+<!--    <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="static/apps/fis_templates/js/shareit-button.js"></script>
+<script type="text/javascript">stLight.options({publisher: "56460063-9367-4952-a8aa-30eb02833c1b", doNotHash: false, doNotCopy: true, hashAddressBar: false});</script>-->
+<script>
+    //if( /cellphone|mobile|wap|wml|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var forcedesktop = false;
+    if(window.location.hash && window.location.hash == '#forcedesktop'){
+        forcedesktop = true;
+        var today = new Date();
+        var expiresDate = new Date();
+        expiresDate.setDate(today.getDate()+365);
+        expiresDate.toUTCString();
+        document.cookie = 'fisskimobiletodesktop=mobiletodesktop;expires='+expiresDate+';path=/;domain=fis-ski.com';
+    }
+    if (window.document.location.href.indexOf('/slope-survey/') != -1){
+        forcedesktop = true;
+    }
+    if ((window.outerWidth > 0 && window.outerWidth < 768 && forcedesktop == false && document.cookie.indexOf('fisskimobiletodesktop') == -1) || document.cookie.indexOf('inapp') >= 0 ){
+        if (window.document.location.href.indexOf('dynamic/athlete-biography.html') != -1){
+            window.document.location = 'http://mobile.fis-ski.com/mobile/mobile-biographies.html'+window.document.location.search+'&type=result';
+        } else {
+            window.document.location = 'http://mobile.fis-ski.com?from=data';
+        }
+    }
+    if (window.location.host == 'data.fis-ski.com'){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37020873-1']);
+        _gaq.push(['_setDomainName', 'fis-ski.com']);
+        _gaq.push(['_addIgnoredRef', 'fis-ski.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }
 </script>
-<br />
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr><td width="70%" valign="top">
-    <table cellpadding="1" cellspacing="0" border="0" bgcolor="#ffffff">
-    <tr>
-        <td class="i0_2">Place</td>
-        <td width="2%">&nbsp;</td>
-        <td class="t"><a href="http://www.fis-ski.com/uk/604/podiums.html?&category=WCM&sector=MA&place=Meiringen Hasliberg&gender=ALL">Meiringen Hasliberg</a> (SUI)</td>
-        <td width="8%">&nbsp;</td>
-        <td class="i0_2">Discipline</td>
-        <td width="2%">&nbsp;</td>
-        <td class="t">Slalom</td>
-    </tr>
-    <tr>
-        <td class="i0_2">Date</td>
-        <td width="2%">&nbsp;</td>
-        <td class="i0_2">23.03.2010</td>
-        <td width="8%">&nbsp;</td>
-        <td class="i0_2">Category</td>
-        <td width="2%">&nbsp;</td>
-        <td class="i0_2">FIS World Criterium Masters AL</td>
-    </tr>
-    <tr>
-        <td class="i0_2">Race codex</td>
-        <td width="2%">&nbsp;</td>
-        <td class="i0_2">9303</td>
-        <td width="8%">&nbsp;</td>
-        <td class="i0_2">Gender</td>
-        <td width="2%">&nbsp;</td>
-        <td class="i0_2">M</td>
-    </tr>
-    <tr>
-    <tr>
-    <td class="i0_2"></td>
-    <td width="2%">&nbsp;</td>
-    <td class="i0_2"></td>
-    <td width="8%">&nbsp;</td>
-    <td class="i0_2">TD Name</td>
-    <td width="2%">&nbsp;</td>
-    <td class="i0_2">Wolf Manfred (GER)</td>
-</tr>
-
-<tr>
-
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-</tr>
-</table>
-</td><td>&nbsp;&nbsp;</td><td width="30%" align="right" valign="top">
-&nbsp;</td></tr>
-<tr><td>
-<form method="get" action="/uk/604/610.html" name="formfilter">
-<input type="hidden" name="sector" id="sector" value="MA" />
-<input type="hidden" name="raceid" id="raceid" value="1466" />
-<span style="font-size:9px;">Nation: </span><input type="text" class="input" onchange="this.value=this.value.toUpperCase();" style="width:80px" name="nationcode" id="nationcode" value="" tooltipText="Enter one or more Nation code<br />Exemple 1: SUI<br />Exemple 2: SUI,FRA,ITA<br />&nbsp;" />
-Age Category <select class="input" onchange="this.form.submit();" name="catage" id="catage"><option value="">ALL</option><option value="6">30 - 34</option><option value="7">35 - 39</option><option value="8">40 - 44</option><option value="9">45 - 49</option><option value="10">50 - 54</option><option value="11">55 - 59</option><option value="12">60 - 64</option><option value="13">65 - 69</option><option value="14">70 - 74</option><option value="15">75 - 79</option><option value="16">80 - 84</option><option value="17">85 - 89</option><option value="18">90 - 94</option></select><input type="submit" value="Filter" class="button"/>
-</form>
-</td></tr>
-<script type="text/javascript">
-var tooltipObj = new DHTMLgoodies_formTooltip();
-tooltipObj.setTooltipPosition('right');
-tooltipObj.setPageBgColor('#EEEEEE');
-tooltipObj.setTooltipCornerSize(15);
-tooltipObj.initFormFieldTooltip();
-</script>
-</table>
-<table width="100%" cellpadding="1" cellspacing="0" border="0" bgcolor="#ffffff">
-<tr>
-<td class='h' align='right'>Rank</td>
-<td class='h' align='right'>Bib</td>
-<td class='h' align='right'>FIS Code</td>
-<td class='h'>Name</td>
-<td class='h' align='center'>Year</td>
-<td class='h' align='center'>Nation</td>
-<td class='h' align='right'>Total Time</td>
-<td class='h' align='right'>FIS Points</td>
-</tr>
-<tr>
-<td class='i0' style="padding-right:7" align='right'>&nbsp;1</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;2</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;5050709</td>
-<td class='i0'><a href=http://www.fis-ski.com/uk/604/613.html?sector=MA&competitorid=84074&type=result>FUCHS Paul</a>&nbsp;</td>
-<td class='i0' align='center'>1957&nbsp;</td>
-<td class='i0' align='center'>AUT&nbsp;</td>
-<td class='i0' align='right'>&nbsp;1:40.11</td>
-<td class='i0' align='right'>&nbsp;0.00</td>
-</tr>
-<td colspan='8' class='t'>Disqualified</td><tr>
-<td class='i1' style="padding-right:7" align='right'>&nbsp;</td>
-<td class='ir_21' style="padding-right:7" align='right'>&nbsp;164</td>
-<td class='ir_21' style="padding-right:7" align='right'>&nbsp;5200921</td>
-<td class='i1'><a href=http://www.fis-ski.com/uk/604/613.html?sector=MA&competitorid=151339&type=result>FORSTER Robert</a>&nbsp;</td>
-<td class='i1' align='center'>1967&nbsp;</td>
-<td class='i1' align='center'>GER&nbsp;</td>
-<td class='i1' align='right'>&nbsp;</td>
-<td class='i1' align='right'>&nbsp;</td>
-</tr>
-<td colspan='8' class='t'>Did not start</td><tr>
-<td class='i0' style="padding-right:7" align='right'>&nbsp;</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;184</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;5200953</td>
-<td class='i0'><a href=http://www.fis-ski.com/uk/604/613.html?sector=MA&competitorid=161969&type=result>BONATO Corrado</a>&nbsp;</td>
-<td class='i0' align='center'>1969&nbsp;</td>
-<td class='i0' align='center'>GER&nbsp;</td>
-<td class='i0' align='right'>&nbsp;</td>
-<td class='i0' align='right'>&nbsp;</td>
-</tr>
-<td colspan='8' class='t'>Did not finish</td><tr>
-<td class='i0' style="padding-right:7" align='right'>&nbsp;</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;156</td>
-<td class='ir_20' style="padding-right:7" align='right'>&nbsp;5200724</td>
-<td class='i0'><a href=http://www.fis-ski.com/uk/604/613.html?sector=MA&competitorid=90446&type=result>JURKA Thomas</a>&nbsp;</td>
-<td class='i0' align='center'>1965&nbsp;</td>
-<td class='i0' align='center'>GER&nbsp;</td>
-<td class='i0' align='right'>&nbsp;</td>
-<td class='i0' align='right'>&nbsp;</td>
-</tr>
-</table>
-<table width="100%" cellpadding=0 cellspacing=0 border=0>
-<tr>
-    <td class=h><img src="static/images/empty.gif" width=2 height=2></td>
-</tr>
-</table>
-<br /></div>
+</body>
+</html>
