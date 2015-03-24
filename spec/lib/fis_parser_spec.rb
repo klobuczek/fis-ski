@@ -13,6 +13,16 @@ describe FisParser, "#update_events" do
   it "should convert integer values" do
     expect(FisParser.send(:i, [Nokogiri::HTML('&nbsp;5200921')],0)).to eq(5200921)
   end
+
+  it "should record time" do
+    FisParser.send(:fetch_results, create(:race, :href => path(:results_with_failures)))
+    expect(Result.first.time).to be > 1
+  end
+
+  it "should survive missing fis points" do
+    FisParser.send(:fetch_results, create(:race, :href => path(:missing_fis_points)))
+    expect(Result.first.time).to be > 1
+  end
 end
 
 def path name

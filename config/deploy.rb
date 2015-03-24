@@ -35,7 +35,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/ca
 # set :keep_releases, 5
 
 set :rvm_ruby_version, '2.2.0@fis-ski'
-set :whenever_roles,        ->{ :worker }
+set :whenever_roles, -> { :worker }
 
 namespace :deploy do
 

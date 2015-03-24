@@ -6,14 +6,17 @@
     = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container-fluid
+    -#.container-fluid
+    .container
       .row
         .col-md-12
           %h1 FIS Masters Cup
           -#=render :partial => 'welcome/menu'
-          =render :partial => 'welcome/index'
-          .notice=flash[:notice]
-          .alert=flash[:alert]
+      =render :partial => 'welcome/index'
+      -#.row
+      -#  .col-md-12
+      -#    .notice=flash[:notice]
+      -#    .alert=flash[:alert]
       .row
         .col-md-12{role: :main}
           =yield

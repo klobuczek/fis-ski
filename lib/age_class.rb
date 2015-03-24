@@ -38,8 +38,4 @@ class AgeClass
   def == other
     @age_class == other.to_i
   end
-
-  def self.same? season, year1, year2
-    AgeClass.new(:season=> season, :year => year1) == AgeClass.new(:season=> season, :year => year2)
-  end
 end

@@ -53,7 +53,6 @@ class FisParser
       loaded = false
       failure = nil
       each_line(race.href, DATA_SELECTOR) do |index, tds|
-        overall_rank = i(tds, 0)
         failure =
             case s(tds, 0)
               when 'Disqualified'
@@ -66,16 +65,17 @@ class FisParser
                 failure
             end
         next if tds.length < 6
-        load_result(race, overall_rank, failure, tds)
+        load_result(race, failure, tds)
         loaded = true
       end
       loaded
     end
 
-    def load_result(race, overall_rank, failure, tds)
-      Result.create :overall_rank => overall_rank,
+    def load_result(race, failure, tds)
+      Result.create :overall_rank => i(tds, 0),
                     :failure => failure,
-                    :fis_points => f(tds, 8),
+                    :time => time(tds, 6),
+                    fis_points: f(tds, 8),
                     :race => race,
                     :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
     end
@@ -99,7 +99,7 @@ class FisParser
     end
 
     def s td, i
-      td[i].text
+      td[i].try :text
     end
 
     def d td, i
@@ -112,6 +112,14 @@ class FisParser
 
     def h td, i
       (link = td[i].at_css('a')) and link[:href]
+    end
+
+    def time td, i
+      to_time s(td, i)
+    end
+
+    def to_time s
+      s.split(':').reduce(0) { |s, v| 60*s+v.to_f }
     end
 
     def numeric? tds, i

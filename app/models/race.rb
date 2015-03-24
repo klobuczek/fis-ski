@@ -56,8 +56,9 @@ class Race < ActiveRecord::Base
   end
 
   def update_age_class_ranks
+    age_class_map = Hash.new(0)
     results.each do |r|
-      r.update_attribute(:rank, results[0, r.overall_rank-1].inject(1) { |count, p| p.overall_rank < r.overall_rank and AgeClass.same?(season, p.competitor.year, r.competitor.year) ? count + 1 : count })
+      r.update_attribute(:rank, age_class_map[AgeClass.new(season: season, year: r.competitor.year).to_i]+=1)
     end
   end
 

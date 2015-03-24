@@ -3,6 +3,6 @@
   Previous seasons:
   =render :partial => 'welcome/season', :collection => (Season.fmc_earliest..Season.current.to_i).to_a
 -['Men', 'Ladies'].each do |gender|
-  %div
-    ="#{gender}:"
-    =render :partial => 'welcome/age_class', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}
+  .row
+    .col-md-1="#{gender}:"
+    .col-md-11=render :partial => 'welcome/age_class', :collection => (1..13).to_a, :locals => { :gender => gender[0,1]}
