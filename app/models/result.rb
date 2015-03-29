@@ -26,8 +26,7 @@ class Result < ActiveRecord::Base
   end
 
   def cup_points
-    @cup_points ||=
-        ((rank.nil? or rank > 15) ? 0 : rank > 3 ? 16 - rank : 30 - 5*rank)*race.factor
+    @cup_points ||= (rule.cup_points rank)*race.factor
   end
 
   def successful?

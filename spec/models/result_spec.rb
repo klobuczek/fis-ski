@@ -2,13 +2,13 @@ describe Result, type: :model do
   describe '#cup_points' do
     [[1, 1, 25], [2, 1, 20], [3, 1, 15], [4, 1, 12], [17, 1, 0], [1, 2, 50]].each do |rank, factor, cup_points|
       it "returns #{cup_points} for rank #{rank}" do
-        result = Result.new(:rank => rank)
+        result = create(:result, :rank => rank)
         allow(result).to receive(:race) { double(:factor => factor) }
         expect(result.cup_points).to eq(cup_points)
       end
     end
     it "should calculate points only once" do
-      result = Result.new(:rank => 1)
+      result = create(:result, rank: 1)
       allow(result).to receive(:race) { double(:factor => 1) }
       2.times { result.cup_points }
     end
@@ -16,7 +16,7 @@ describe Result, type: :model do
 
   describe "#by_category" do
     it "should empty array for empty results" do
-      allow(Result).to receive(:by_age_class) {[]}
+      allow(Result).to receive(:by_age_class) { [] }
       expect(Result.group_by_competitor(2010, 'M', 4)).to eq([])
     end
 

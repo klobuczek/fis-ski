@@ -48,6 +48,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem "devise"
 gem 'whenever', :require => false
+gem 'simple_form'
+gem 'active_attr'
 
 group :development do
 # Use Capistrano for deployment

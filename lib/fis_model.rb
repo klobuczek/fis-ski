@@ -1,4 +1,6 @@
 module FisModel
+  attr_accessor :rule
+
   def compare c, *spec
     spec.each do |attr, direction|
       comparison = direction * (nvl(attr) <=> c.nvl(attr))

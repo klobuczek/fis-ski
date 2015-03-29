@@ -4,5 +4,6 @@ FactoryGirl.define do
     r.overall_rank 1
     r.association :competitor
     r.association :race
+    r.rule Rule.new
   end
 end

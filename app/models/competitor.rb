@@ -16,9 +16,9 @@ class Competitor < ActiveRecord::Base
     @fis_points ||= calculate :fis_points
   end
 
-  def self.classify! competitors, remaining, filter='contetion'
+  def self.classify! competitors, rule, remaining, filter='contetion'
     competitors.reject! { |c| !c.qualified?(remaining) and c.season.advanced? } unless filter == 'all'
-    competitors.each {|c| c.results.sort!}
+    competitors.each { |c| c.results.each { |r| r.rule = rule }.sort! }
     previous = nil
     competitors.sort!.each_with_index do |c, i|
       if previous and (previous.cup_points == c.cup_points)
@@ -38,8 +38,7 @@ class Competitor < ActiveRecord::Base
   private
   def calculate attr
     sum = 0.0
-    results.each_with_index {|r, i| sum += r.send attr if r.send(attr) and i < season.max_races}
+    results.each_with_index { |r, i| sum += r.send attr if r.send(attr) and i < season.max_races }
     sum
   end
-
 end

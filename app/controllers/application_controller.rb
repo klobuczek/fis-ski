@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   layout 'layout'
 
   helper :application
+
+  def default_url_options(options={})
+    params.slice(:rule)
+  end
 end

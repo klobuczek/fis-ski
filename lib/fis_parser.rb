@@ -52,6 +52,7 @@ class FisParser
     def fetch_results race
       loaded = false
       failure = nil
+      winners_time = nil
       each_line(race.href, DATA_SELECTOR) do |index, tds|
         failure =
             case s(tds, 0)
@@ -65,7 +66,12 @@ class FisParser
                 failure
             end
         next if tds.length < 6
-        load_result(race, failure, tds)
+        result = load_result(race, failure, tds)
+        winners_time ||= result.time
+        if result.overall_rank && !result.fis_points
+          f_factor ||= Rules::FFactorRule.f_factor(race)
+          result.update_attribute :fis_points, ((result.time/winners_time-1)*f_factor).round(2)
+        end
         loaded = true
       end
       loaded
@@ -115,11 +121,11 @@ class FisParser
     end
 
     def time td, i
-      to_time s(td, i)
+      to_time s(td, i).scan(/[0-9:.]+/).first
     end
 
     def to_time s
-      s.split(':').reduce(0) { |s, v| 60*s+v.to_f }
+      s && s.split(':').reduce(0) { |s, v| 60*s+v.to_f }
     end
 
     def numeric? tds, i

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231045032) do
+ActiveRecord::Schema.define(version: 20101003222849) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "gender",     limit: 1
