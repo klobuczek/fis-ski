@@ -1,4 +1,5 @@
 %h2
+  = "Season #{season} - "
   = "Class " + age_class(params[:season], params[:gender], params[:age_class])
   = "Final" if season_completed?
 

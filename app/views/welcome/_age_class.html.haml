@@ -1,1 +1,1 @@
-= link_to age_class(season, gender, age_class), competitors_url(:gender => gender, :age_class => age_class, :season => season, :filter => :contention)
+= link_to age_class(season, gender, age_class), competitors_url(:gender => gender, :age_class => age_class, :season => season, :filter => :contention), class: ('bg-primary' if gender == params[:gender] && age_class.to_s == params[:age_class] )

@@ -4,7 +4,7 @@ module CompetitorsHelper
   end
 
   def pass_params filter
-    {:gender => params[:gender], :age_class => params[:age_class], :season => season, :filter => filter}
+    {:gender => params[:gender], :age_class => params[:age_class], :season => season, :filter => filter, discipline: params[:discipline]}
   end
 
   def elimination_phase?

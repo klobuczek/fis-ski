@@ -1,0 +1,1 @@
+= link_to discipline, (params[:gender] and params[:age_class]) ? competitors_url(:season => season, :gender => params[:gender], :age_class => params[:age_class], :filter => :contention, discipline: discipline) : root_url(:season => season, discipline: discipline), class: ('bg-primary' if discipline == params[:discipline] || discipline == 'All' && !params[:discipline])
