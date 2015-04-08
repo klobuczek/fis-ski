@@ -1,6 +1,6 @@
 %h2
   = "Season #{season} - "
-  = "Class " + age_class(params[:season], params[:gender], params[:age_class])
+  = "Class " + decorate_age_class(params[:age_class], params[:season], params[:age_group])
   = "Final" if season_completed?
 
 -if showing_both?
@@ -12,9 +12,9 @@
 -if elimination_phase?
   %p
     -if params[:filter] == 'all'
-      =link_to "hide eliminated", pass_params(:contention), { 'data-toggle' => :tooltip, 'data-original-title' => season_completed? ? 'Shows the final standings' : 'Shows only competitors who still have a chance to complete the required minimum number of races till the end of the season'}
+      =link_to "hide eliminated", rewrite_params(filter: :contention), { 'data-toggle' => :tooltip, 'data-original-title' => season_completed? ? 'Shows the final standings' : 'Shows only competitors who still have a chance to complete the required minimum number of races till the end of the season'}
     -else
-      =link_to "show eliminated", pass_params(:all), { 'data-toggle' => :tooltip, 'data-original-title' => "Includes competitors who did not qualify for the FMC"}
+      =link_to "show eliminated", rewrite_params(filter: :all), { 'data-toggle' => :tooltip, 'data-original-title' => "Includes competitors who did not qualify for the FMC"}
 
 %table.table.table-condensed.table-hover
   %tr

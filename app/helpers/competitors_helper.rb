@@ -3,10 +3,6 @@ module CompetitorsHelper
     @tie_breaker ||= (@competitors.inject(false) {|r, c| r ||= c.tie}) #and (params[:filter] == 'qualified' or (params[:filter] == 'contention' and season_completed?)))
   end
 
-  def pass_params filter
-    {:gender => params[:gender], :age_class => params[:age_class], :season => season, :filter => filter, discipline: params[:discipline]}
-  end
-
   def elimination_phase?
     remaining_races < season.min_races
   end
@@ -17,6 +13,6 @@ module CompetitorsHelper
                         
   private
   def completed_min_races?
-    Race.completed(season, params[:gender], params[:age_class]) >= season.min_races
+    Race.completed(season, params[:age_group]) >= season.min_races
   end
 end

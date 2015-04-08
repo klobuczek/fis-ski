@@ -17,21 +17,21 @@ describe Result, type: :model do
   describe "#by_category" do
     it "should empty array for empty results" do
       allow(Result).to receive(:by_age_class) { [] }
-      expect(Result.group_by_competitor(2010, 'M', 4)).to eq([])
+      expect(Result.group_by_competitor(2010, 'A', 4, 'dummy')).to eq([])
     end
 
     it "should group results by competitors" do
       allow(Result).to receive(:by_age_class).and_return [r1=competitor_stub(1), r2=competitor_stub(1)]
-      expect(Result.group_by_competitor(2010, 'M', 4).first.results).to include(r1, r2)
+      expect(Result.group_by_competitor(2010, 'A', 4, 'dummy').first.results).to include(r1, r2)
     end
 
     it "should return nothing" do
-      expect(Result.send(:by_age_class, 2010, 'M', 4)).to be_empty
+      expect(Result.send(:by_age_class, 2010, 'A', 4, 'Slalom')).to be_empty
     end
 
     it "should return result`" do
       result = create(:result)
-      expect(Result.send(:by_age_class, 2010, 'M', 4)).to eq([result])
+      expect(Result.send(:by_age_class, 2010, 'A', 4, 'Slalom')).to eq([result])
     end
   end
 

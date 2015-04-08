@@ -1,5 +1,5 @@
 module FisModel
-  attr_accessor :rule
+  attr_accessor :rule, :ranking_method
 
   def compare c, *spec
     spec.each do |attr, direction|
@@ -15,5 +15,9 @@ module FisModel
 
   def <=> c
     compare c, [:cup_points, -1], [:fis_points, 1]
+  end
+
+  def ranking
+    send ranking_method || :rank
   end
 end

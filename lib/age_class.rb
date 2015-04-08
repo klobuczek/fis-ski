@@ -1,8 +1,13 @@
 # @category age category number
 
 class AgeClass
+  AGE_GROUPS = ('A'..'C').to_a
+
+  attr_reader :age_group
+
   def initialize options
     @season = options[:season] if options[:season]
+    @age_group = options[:age_group] if options[:age_group]
     @age_class = (@season.to_i - 26 - options[:year])/5 if options[:year]
     @age_class = options[:age_class].to_i if options[:age_class]
   end
@@ -16,26 +21,35 @@ class AgeClass
   end
 
   def min_year
-    max_year - 4
+    year max_age
   end
 
   def max_year
-    @season.to_i - 1 - min_age
+    year min_age
+  end
+
+  def year age
+    @season.to_i - 1 - age
   end
 
   def min_age
-    25 + @age_class*5
+    25 + (@age_class || (age_group == 'B' ? 6 : 1))*5
   end
 
   def max_age
-    min_age + 4
-  end
-
-  def age_group gender
-    gender == 'M' ? @age_class <= 5 ? 'A' : 'B' : 'C'
+    @age_class ? min_age + 4 : age_group == 'A' ? 54 : 9999
   end
 
   def == other
     @age_class == other.to_i
+  end
+
+  def gender
+    ['A','B'].include?(age_group) ? 'M' : 'L'
+  end
+
+  def classes
+    return [] unless @age_group
+    ((@age_group == 'B' ? 6 : 1)..(@age_group == 'A' ? 5 : 13)).to_a
   end
 end

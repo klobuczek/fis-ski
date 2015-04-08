@@ -7,5 +7,6 @@ FactoryGirl.define do
     r.gender 'M'
     r.date '30.01.2010'
     r.category 'FMC'
+    r.discipline 'Slalom'
   end
 end

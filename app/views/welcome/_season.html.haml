@@ -1,1 +1,1 @@
-= link_to season, (params[:gender] and params[:age_class]) ? competitors_url(:season => season, :gender => params[:gender], :age_class => params[:age_class], :filter => :contention) : root_url(:season => season), class: ('bg-primary' if season.to_s == params[:season])
+= highlighted_link :season, season

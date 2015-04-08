@@ -16,9 +16,9 @@ class Competitor < ActiveRecord::Base
     @fis_points ||= calculate :fis_points
   end
 
-  def self.classify! competitors, rule, remaining, filter='contetion'
+  def self.classify! competitors, rule, ranking_method, remaining, filter='contetion'
     competitors.reject! { |c| !c.qualified?(remaining) and c.season.advanced? } unless filter == 'all'
-    competitors.each { |c| c.results.each { |r| r.rule = rule }.sort! }
+    competitors.each { |c| c.results.each { |r| r.rule = rule; r.ranking_method = ranking_method }.sort! }
     previous = nil
     competitors.sort!.each_with_index do |c, i|
       if previous and (previous.cup_points == c.cup_points)

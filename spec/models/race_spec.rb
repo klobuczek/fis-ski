@@ -30,13 +30,13 @@ describe Race, "#remaining" do
 
   it "returns 1 for 2 pending 'A' races" do
     allow(Race).to receive(:pending) {2}
-    expect(Race.remaining('M', 3)).to eq(1)
+    expect(Race.remaining('A', 3)).to eq(1)
   end
 
   it "returns 1 for 3 pending 'M', 3 completed 'A' and 2 completed 'B' races" do
     allow(Race).to receive(:pending) {3}
     allow(Race).to receive(:scored).and_return(3, 2)
-    expect(Race.remaining('M', 3)).to eq(1)
+    expect(Race.remaining('A', 3)).to eq(1)
   end
 end
 

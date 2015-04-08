@@ -9,22 +9,23 @@ class Race < ActiveRecord::Base
   scope :fmc, -> { where(FMC) }
 
   class << self
-    def remaining gender, age_class=nil
+    def remaining age_group, age_class=nil
       season = Season.current
-      count = pending(season, gender)
-      return count if gender == 'L'
+      age_class = AgeClass.new(:season => season, :age_class => age_class, age_group: age_group)
+      count = pending(season, age_class.gender)
+      return count if age_class.gender == 'L'
       return count/2 if count%2 == 0
 
       counts = {}
       ['A', 'B'].each { |c| counts[c]=scored(season, c) }
 
-      return count/2 if counts[AgeClass.new(:season => season, :age_class => age_class).age_group(gender)] == counts.values.max
+      return count/2 if counts[age_group] == counts.values.max
 
       count/2 + 1
     end
 
-    def completed season, gender, age_class
-      scored(season, AgeClass.new(:season => season, :age_class => age_class).age_group(gender))
+    def completed season, age_group
+      scored(season, age_group)
     end
 
     def update_factors(season)
