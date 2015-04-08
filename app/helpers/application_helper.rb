@@ -12,7 +12,19 @@ module ApplicationHelper
   end
 
   def rewrite_params options={}
-    {season: Season.current.to_i, age_group: :A, filter: :contention, discipline: :All}.with_indifferent_access.merge(params.except :controller, :action).merge(options)
+    normalize_age_class({season: Season.current.to_i, age_group: :A, filter: :contention, discipline: :All}.with_indifferent_access.merge(params.except :controller, :action).merge(options))
+  end
+
+  def normalize_age_class options
+    unless options[:age_class].nil? || options[:age_class] == 'All'
+      case options[:age_group]
+        when 'A'
+          options[:age_class] = [options[:age_class].to_i, 5].min
+        when 'B'
+          options[:age_class] = [options[:age_class].to_i, 6].max
+      end
+    end
+    options
   end
 
   def highlighted_link key, value
