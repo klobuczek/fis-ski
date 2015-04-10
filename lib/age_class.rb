@@ -10,6 +10,7 @@ class AgeClass
     @age_group = options[:age_group] if options[:age_group]
     @age_class = (@season.to_i - 26 - options[:year])/5 if options[:year]
     @age_class = options[:age_class].to_i if options[:age_class]
+    @age_group ||= options[:gender] == 'M' ? @age_class <= 5 ? 'A' : 'B' : 'C' if options[:gender]
   end
 
   def to_i
