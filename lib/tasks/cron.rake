@@ -16,7 +16,7 @@ end
 
 task :fix => :environment do
   ActiveRecord::Base.transaction do
-    Race.all(:include => {:results => :competitor}).each { |race| race.update_age_class_ranks }
+    Race.includes(:results => :competitor).each(&:update_age_class_ranks)
   end
 end
 

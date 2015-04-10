@@ -53,4 +53,8 @@ class AgeClass
     return [] unless @age_group
     ((@age_group == 'B' ? 6 : 1)..(@age_group == 'A' ? 5 : 13)).to_a
   end
+
+  def self.same? season, year1, year2
+    AgeClass.new(:season=> season, :year => year1) == AgeClass.new(:season=> season, :year => year2)
+  end
 end
