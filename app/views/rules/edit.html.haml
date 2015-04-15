@@ -2,5 +2,6 @@
   .col-md-12{role: :main}
     =simple_form_for @rule, url: rule_path do |f|
       =f.input :cup_points_rule, as: :radio_buttons, collection: [["top 15", 15], ["top 30", 30]], label: 'How many competitors should be awarded cup points?'
+      -#=f.input :handicap, label: 'Handicap', hint: 'How many percent time per age year should be subtracted from time for overall results?'
       =f.button :submit, class: 'btn-primary'
       =link_to "Reset to Official Rules", rule_path, method: :delete, class: 'btn btn-danger'

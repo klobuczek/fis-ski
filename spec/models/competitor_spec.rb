@@ -20,8 +20,8 @@ describe Competitor, "#calculate" do
   end
 
   it "should sort correctly" do
-    r1 = create(:result, :rank => nil, :fis_points => nil)
-    r2 = create(:result, :rank => 20, :fis_points => 100)
+    r1 = create(:result, :time => nil, :fis_points => nil)
+    r2 = create(:result, :time => 20, :fis_points => 100)
     r1.competitor.results=[r1, r2]
     r1.competitor.results.sort!
     expect(r1.competitor.results).to eq([r2, r1])

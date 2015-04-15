@@ -21,8 +21,10 @@ describe Result, type: :model do
     end
 
     it "should group results by competitors" do
-      allow(Result).to receive(:by_age_class).and_return [r1=competitor_stub(1), r2=competitor_stub(1)]
-      expect(Result.group_by_competitor(2010, 'A', 4, 'dummy').first.results).to include(r1, r2)
+      c = create :competitor
+      r1 = create :result, competitor: c
+      r2 = create :result, competitor: c
+      expect(Result.group_by_competitor(2010, 'A', 4, nil).first.results).to include(r1, r2)
     end
 
     it "should return nothing" do
@@ -41,7 +43,16 @@ describe Result, type: :model do
     end
   end
 
+  describe "#add_rank" do
+    it "should inject rank" do
+      {[1.0, 2.0, nil] => [1, 2, nil],
+       [1.0, 1.0, 1.0, 2.0] => [1, 1, 1, 4]}.each do |times, ranks|
+        expect(Result.send(:add_ranks, times.map { |time| create :result, time: time }).map(&:rank)).to eq(ranks)
+      end
+    end
+  end
+
   def competitor_stub id
-    double(:competitor => Competitor.new(:id => id), :competitor_id => id)
+    double(:competitor => Competitor.new(:id => id), :competitor_id => id, race_id: 123, time: 1.0)
   end
 end

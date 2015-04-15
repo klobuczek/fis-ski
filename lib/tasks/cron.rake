@@ -14,11 +14,16 @@ namespace :load do
   end
 end
 
-task :fix => :environment do
-  ActiveRecord::Base.transaction do
-    Race.includes(:results => :competitor).each(&:update_age_class_ranks)
+namespace :reload do
+  task season: ['delete:season', 'load:season']
+end
+
+namespace :delete do
+  task season: :environment do
+    Race.where(season: (ENV['season'] || Season.current).to_i).destroy_all
   end
 end
+
 
 task :rebuild => ['db:migrate', 'load:all']
 

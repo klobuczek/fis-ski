@@ -44,7 +44,6 @@ class FisParser
           race.update_attribute(:status, 'loaded')
           race.update_attribute(:loaded_at, Time.now)
           race.update_attribute(:age_group, AgeClass.new(:season => race.season, :year => year, gender: race.gender).age_group)
-          race.update_age_class_ranks
         end
       end
     end
@@ -68,7 +67,7 @@ class FisParser
         next if tds.length < 6
         result = load_result(race, failure, tds)
         winners_time ||= result.time
-        if result.overall_rank && !result.fis_points
+        if result.time && !result.fis_points
           f_factor ||= Rules::FFactorRule.f_factor(race)
           result.update_attribute :fis_points, ((result.time/winners_time-1)*f_factor).round(2)
         end
@@ -78,8 +77,7 @@ class FisParser
     end
 
     def load_result(race, failure, tds)
-      Result.create :overall_rank => i(tds, 0),
-                    :failure => failure,
+      Result.create :failure => failure,
                     :time => time(tds, 6),
                     fis_points: f(tds, 8),
                     :race => race,
@@ -121,11 +119,11 @@ class FisParser
     end
 
     def time td, i
-      to_time s(td, i).scan(/[0-9:.]+/).first
+      to_time s(td, i).scan(/[0-9:.,]+/).first
     end
 
     def to_time s
-      s && s.split(':').reduce(0) { |s, v| 60*s+v.to_f }
+      s && s.sub(',','.').split(':').reduce(0) { |s, v| 60*s+v.to_f }
     end
 
     def numeric? tds, i

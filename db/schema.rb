@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20101003222849) do
+ActiveRecord::Schema.define(version: 20150412132706) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "gender",     limit: 1
@@ -51,11 +51,9 @@ ActiveRecord::Schema.define(version: 20101003222849) do
   create_table "results", force: :cascade do |t|
     t.integer  "competitor_id", limit: 4,  null: false
     t.integer  "race_id",       limit: 4,  null: false
-    t.integer  "rank",          limit: 4
     t.float    "fis_points",    limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "overall_rank",  limit: 4
     t.string   "failure",       limit: 3
     t.float    "time",          limit: 24
   end

@@ -31,6 +31,7 @@ describe FisParser do
   describe ".to_time" do
     it "should convert time" do
       expect(FisParser.send :to_time, '1:02.46').to eq(62.46)
+      expect(FisParser.send :to_time, '1:02,46').to eq(62.46)
     end
   end
 end

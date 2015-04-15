@@ -47,7 +47,7 @@ describe Race, "#results" do
   end
 
   it "returns no successful results" do
-    create :result, :overall_rank => nil, :failure => 'DSQ'
+    create :result, :time => nil, :failure => 'DSQ'
     expect(Race.first.results.count).to eq(0)
   end
 end

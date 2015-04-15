@@ -2,8 +2,9 @@ class Race < ActiveRecord::Base
   LOADED = 'loaded'
   FMC = {:category => %w{FMC WCM}}
 
-  has_many :results, -> { where("overall_rank is not null").order("overall_rank") }
-  has_many :starts, -> { where("failure is null or failure <> 'DNS'").order("failure, overall_rank") }, class_name: Result
+  has_many :results, -> { where("time is not null").order("time") }
+  has_many :starts, -> { where("failure is null or failure <> 'DNS'").order("failure, time") }, class_name: Result
+  has_many :all_results, class_name: Result, dependent: :delete_all
 
   scope :to_be_scored, lambda { |season| in_season(season).where("comments is null or comments != 'Cancelled'").where("status is null or status != '#{LOADED}'") }
   scope :fmc, -> { where(FMC) }
@@ -53,14 +54,6 @@ class Race < ActiveRecord::Base
 
     def scored season, age_group
       in_season(season).fmc.where(:age_group => age_group, :status => LOADED).count
-    end
-  end
-
-  def update_age_class_ranks
-    # age_class_map = Hash.new(0)
-    results.each do |r|
-      # r.update_attribute(:rank, age_class_map[AgeClass.new(season: season, year: r.competitor.year).to_i]+=1)
-      r.update_attribute(:rank, results[0, r.overall_rank-1].inject(1) { |count, p| p.overall_rank < r.overall_rank and AgeClass.same?(season, p.competitor.year, r.competitor.year) ? count + 1 : count })
     end
   end
 
