@@ -1,11 +1,14 @@
 FisSki::Application.routes.draw do
 
-  root :to => "welcome#index"
+  root :to => "standings#index"
   devise_for :users
 
-  resources :races
+  resources :races do
+    resources :results
+  end
 
-  resources :competitors
+  # resources :competitors
+  resources :standings
 
   resource :rule
 

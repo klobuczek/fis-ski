@@ -16,6 +16,19 @@ class Result < ActiveRecord::Base
           map { |g| g.first.competitor.tap { |c| c.results = g } }
     end
 
+    def add_ranks(sorted_results)
+      rank = 0
+      previous_time = nil
+      sorted_results.each_with_index do |result, index|
+        next unless result.time
+        if result.time != previous_time
+          rank = index + 1
+          previous_time = result.time
+        end
+        result.rank = rank
+      end
+    end
+
     private
     def where_age_class(age_class, options)
       includes(:competitor, :race).where(:races => Race::FMC).where(races: {gender: age_class.gender}).started.where(:races => options.select { |_, v| v }, :competitors => {:year => age_class.min_year..age_class.max_year}).order('race_id, -time desc')
@@ -32,18 +45,6 @@ class Result < ActiveRecord::Base
       end.values
     end
 
-    def add_ranks(sorted_results)
-      rank = 0
-      previous_time = nil
-      sorted_results.each_with_index do |result, index|
-        next unless result.time
-        if result.time != previous_time
-          rank = index + 1
-          previous_time = result.time
-        end
-        result.rank = rank
-      end
-    end
   end
 
   def cup_points

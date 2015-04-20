@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def season
-    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
-  end
-
   def season_completed?
     remaining_races == 0 and season.advanced?
   end
@@ -29,6 +25,7 @@ module ApplicationHelper
 
   def highlighted_link key, value
     rewritten_params = rewrite_params(key => value)
-    link_to block_given? ? yield(value) : value, send(rewritten_params[:age_class] ? :competitors_url : :root_url, rewritten_params), class: ('bg-primary' if value.to_s == params[key].to_s)
+    # link_to block_given? ? yield(value) : value, send(rewritten_params[:age_class] ? :competitors_url : :root_url, rewritten_params), class: ('bg-primary' if value.to_s == params[key].to_s)
+    link_to block_given? ? yield(value) : value.to_s.capitalize, rewritten_params, class: ('bg-primary' if value.to_s == params[key].to_s)
   end
 end

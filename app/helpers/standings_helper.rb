@@ -1,4 +1,4 @@
-module WelcomeHelper
+module StandingsHelper
   def decorate_age_class age_class, season = Season.current, age_group=nil
     if age_class == 'All'
       [age_group, 'Overall'].compact.join ' '

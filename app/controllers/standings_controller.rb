@@ -1,4 +1,4 @@
-class CompetitorsController < ApplicationController
+class StandingsController < ApplicationController
   def index
     @competitors = Competitor.classify!(
         Result.group_by_competitor(season.to_i, params[:age_group],

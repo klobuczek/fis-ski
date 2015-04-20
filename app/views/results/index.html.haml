@@ -1,0 +1,14 @@
+=@race.place
+=@race.date
+=@race.discipline
+=@race.age_group
+
+%table.table.table-condensed.table-hover
+  %tr
+    %th Rank
+    %th Name
+    %th Year
+    %th Nation
+    %th Time
+    %th Race Points
+  =render partial: 'result', collection: @results
