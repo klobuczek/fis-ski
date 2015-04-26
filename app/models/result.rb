@@ -13,7 +13,7 @@ class Result < ActiveRecord::Base
       group_by(
           group_by(by_age_class(season, age_group, age_class, discipline), :race_id).each { |g| add_ranks(g) }.flatten,
           :competitor_id).
-          map { |g| g.first.competitor.tap { |c| c.results = g } }
+          map { |g| g.first.competitor.tap { |c| c.season_results = g } }
     end
 
     def add_ranks(sorted_results)

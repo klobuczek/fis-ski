@@ -1,11 +1,11 @@
 class Competitor < ActiveRecord::Base
   include FisModel
 
-  attr_accessor :rank, :tie
-  attr_accessor :results
+  attr_accessor :rank, :tie, :season_results
+  has_many :results
 
   def qualified? remaining=0
-    results.select(&:successful?).size >= season.min_races - remaining
+    season_results.select(&:successful?).size >= season.min_races - remaining
   end
 
   def cup_points
@@ -18,7 +18,7 @@ class Competitor < ActiveRecord::Base
 
   def self.classify! competitors, rule, remaining, filter='contetion'
     competitors.reject! { |c| !c.qualified?(remaining) and c.season.advanced? } unless filter == 'all'
-    competitors.each { |c| c.results.each { |r| r.rule = rule }.sort! }
+    competitors.each { |c| c.season_results.each { |r| r.rule = rule }.sort! }
     previous = nil
     competitors.sort!.each_with_index do |c, i|
       if previous and (previous.cup_points == c.cup_points)
@@ -32,13 +32,13 @@ class Competitor < ActiveRecord::Base
   end
 
   def season
-    @season ||= Season.new results.first.race.date
+    @season ||= Season.new season_results.first.race.date
   end
 
   private
   def calculate attr
     sum = 0.0
-    results.each_with_index { |r, i| sum += r.send attr if r.send(attr) and i < season.max_races }
+    season_results.each_with_index { |r, i| sum += r.send attr if r.send(attr) and i < season.max_races }
     sum
   end
 end

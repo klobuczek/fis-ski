@@ -24,7 +24,7 @@ describe Result, type: :model do
       c = create :competitor
       r1 = create :result, competitor: c
       r2 = create :result, competitor: c
-      expect(Result.group_by_competitor(2010, 'A', 4, nil).first.results).to include(r1, r2)
+      expect(Result.group_by_competitor(2010, 'A', 4, nil).first.season_results).to include(r1, r2)
     end
 
     it "should return nothing" do

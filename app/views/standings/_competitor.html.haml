@@ -17,4 +17,4 @@
       -if competitor.tie
         ='%.2f' % competitor.race_points
   %td
-    =render :partial => 'result', :collection => competitor.results, :locals => {:tie => (competitor.tie and tie_breaker)}
+    =render :partial => 'result', :collection => competitor.season_results, :locals => {:tie => (competitor.tie and tie_breaker)}
