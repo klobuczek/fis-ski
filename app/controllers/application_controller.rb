@@ -11,13 +11,8 @@ class ApplicationController < ActionController::Base
   layout 'layout'
 
   helper :application
-  helper_method :season
 
   def default_url_options(options={})
     params.slice(:rule)
-  end
-
-  def season
-    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
   end
 end

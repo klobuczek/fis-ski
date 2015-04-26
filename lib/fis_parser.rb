@@ -67,9 +67,9 @@ class FisParser
         next if tds.length < 6
         result = load_result(race, failure, tds)
         winners_time ||= result.time
-        if result.time && !result.fis_points
+        if result.time && !result.race_points
           f_factor ||= Rules::FFactorRule.f_factor(race)
-          result.update_attribute :fis_points, ((result.time/winners_time-1)*f_factor).round(2)
+          result.update_attribute :race_points, ((result.time/winners_time-1)*f_factor).round(2)
         end
         loaded = true
       end
@@ -79,7 +79,7 @@ class FisParser
     def load_result(race, failure, tds)
       Result.create :failure => failure,
                     :time => time(tds, 6),
-                    fis_points: f(tds, 8),
+                    race_points: f(tds, 8),
                     :race => race,
                     :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
     end

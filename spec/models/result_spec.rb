@@ -39,7 +39,7 @@ describe Result, type: :model do
 
   describe "#sort!" do
     it "should sort correctly" do
-      expect([r1 = build(:result, :rank => nil, :fis_points => nil), r2 = build(:result, :rank => 20, :fis_points => 100)].sort).to eq([r2, r1])
+      expect([r1 = build(:result, :rank => nil, :race_points => nil), r2 = build(:result, :rank => 20, :race_points => 100)].sort).to eq([r2, r1])
     end
   end
 

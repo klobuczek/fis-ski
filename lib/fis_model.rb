@@ -14,6 +14,6 @@ module FisModel
   end
 
   def <=> c
-    compare c, [:cup_points, -1], [:fis_points, 1]
+    compare c, [:cup_points, -1], [:race_points, 1]
   end
 end

@@ -15,6 +15,6 @@
   -if tie_breaker  
     %td{:align => :right}
       -if competitor.tie
-        ='%.2f' % competitor.fis_points
+        ='%.2f' % competitor.race_points
   %td
     =render :partial => 'result', :collection => competitor.results, :locals => {:tie => (competitor.tie and tie_breaker)}

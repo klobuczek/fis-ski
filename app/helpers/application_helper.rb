@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def season
+    @season ||= (params[:season] ? Season.new(params[:season].to_i) : Season.current)
+  end
+
   def season_completed?
     remaining_races == 0 and season.advanced?
   end

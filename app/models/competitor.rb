@@ -12,8 +12,8 @@ class Competitor < ActiveRecord::Base
     @cup_points ||= calculate :cup_points
   end
 
-  def fis_points
-    @fis_points ||= calculate :fis_points
+  def race_points
+    @race_points ||= calculate :race_points
   end
 
   def self.classify! competitors, rule, remaining, filter='contetion'

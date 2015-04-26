@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412132706) do
+ActiveRecord::Schema.define(version: 20150426002714) do
 
   create_table "competitors", force: :cascade do |t|
     t.string   "gender",     limit: 1
@@ -28,22 +28,23 @@ ActiveRecord::Schema.define(version: 20150412132706) do
   add_index "competitors", ["gender", "year"], name: "index_competitors_on_gender_and_year", using: :btree
 
   create_table "races", force: :cascade do |t|
-    t.integer  "codex",      limit: 4,               null: false
-    t.integer  "season",     limit: 4,               null: false
-    t.string   "place",      limit: 255,             null: false
-    t.string   "nation",     limit: 255,             null: false
+    t.integer  "codex",      limit: 4,                 null: false
+    t.integer  "season",     limit: 4,                 null: false
+    t.string   "place",      limit: 255,               null: false
+    t.string   "nation",     limit: 255,               null: false
     t.string   "discipline", limit: 255
     t.string   "href",       limit: 255
-    t.string   "gender",     limit: 1,               null: false
-    t.integer  "factor",     limit: 4,   default: 1, null: false
-    t.date     "date",                               null: false
+    t.string   "gender",     limit: 1,                 null: false
+    t.integer  "factor",     limit: 4,   default: 1,   null: false
+    t.date     "date",                                 null: false
     t.string   "comments",   limit: 255
     t.string   "status",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "age_group",  limit: 1
     t.datetime "loaded_at"
-    t.string   "category",   limit: 3,               null: false
+    t.string   "category",   limit: 3,                 null: false
+    t.float    "penalty",    limit: 24,  default: 0.0
   end
 
   add_index "races", ["codex"], name: "index_races_on_codex", using: :btree
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150412132706) do
   create_table "results", force: :cascade do |t|
     t.integer  "competitor_id", limit: 4,  null: false
     t.integer  "race_id",       limit: 4,  null: false
-    t.float    "fis_points",    limit: 24
+    t.float    "race_points",   limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "failure",       limit: 3

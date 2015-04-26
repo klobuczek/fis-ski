@@ -24,7 +24,7 @@ describe FisParser do
       race = create(:race, :href => path(:missing_fis_points), season: 2015, discipline: :Slalom)
       FisParser.send(:fetch_results, race)
       expect(race.results.first.time).to eq(97.68)
-      expect(race.results.second.fis_points).to eq(34.13)
+      expect(race.results.second.race_points).to eq(34.13)
     end
   end
 
