@@ -1,10 +1,10 @@
 class Race < ActiveRecord::Base
+  include FisPointsCalculator::Race
+
   LOADED = 'loaded'
   FMC = {:category => %w{FMC WCM}}
 
-  has_many :results, -> { where("time is not null").order("time") }
-  has_many :starts, -> { where("failure is null or failure <> 'DNS'").order("failure, time") }, class_name: Result
-  has_many :all_results, class_name: Result, dependent: :delete_all
+  has_many :results, -> { order(:failure, :time) }, inverse_of: :race
 
   scope :to_be_scored, lambda { |season| in_season(season).where("comments is null or comments != 'Cancelled'").where("status is null or status != '#{LOADED}'") }
   scope :fmc, -> { where(FMC) }

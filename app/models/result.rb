@@ -1,10 +1,12 @@
 class Result < ActiveRecord::Base
   include FisModel
-  belongs_to :competitor
-  belongs_to :race
+  include FisPointsCalculator::Result
 
-  scope :successful, -> { where("time is not null") }
-  scope :started, -> { where("failure is null or failure <> 'DNS'") }
+  belongs_to :competitor, inverse_of: :results
+  belongs_to :race, inverse_of: :results
+
+  scope :successful, -> { where.not time: nil }
+  scope :started, -> { where(failure: [nil, :DSQ, :DNF] ) }
 
   attr_accessor :rank
 

@@ -1,8 +1,8 @@
 class Competitor < ActiveRecord::Base
   include FisModel
+  include FisPointsCalculator::Competitor
 
   attr_accessor :rank, :tie, :season_results
-  has_many :results
 
   def qualified? remaining=0
     season_results.select(&:successful?).size >= season.min_races - remaining

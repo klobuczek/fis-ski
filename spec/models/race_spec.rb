@@ -43,12 +43,12 @@ end
 describe Race, "#results" do
   it "returns successful results" do
     create :result
-    expect(Race.first.results.count).to eq(1)
+    expect(Race.first.results.successful.count).to eq(1)
   end
 
   it "returns no successful results" do
     create :result, :time => nil, :failure => 'DSQ'
-    expect(Race.first.results.count).to eq(0)
+    expect(Race.first.results.successful.count).to eq(0)
   end
 end
 

@@ -1,7 +1,10 @@
-=@race.place
-=@race.date
-=@race.discipline
-=@race.age_group
+%h2
+  =@race.place
+  =@race.date
+  =@race.discipline
+  =@race.age_group
+  Penalty:
+  =@race.penalty
 
 %table.table.table-condensed.table-hover
   %tr
@@ -10,5 +13,7 @@
     %th Year
     %th Nation
     %th Time
+    %th FIS Points at Start
     %th Race Points
+    %th FIS Points
   =render partial: 'result', collection: @results

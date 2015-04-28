@@ -1,0 +1,16 @@
+%h2
+  =@competitor.name
+  =@competitor.year
+  =@competitor.nation
+
+%table.table.table-condensed.table-hover
+  %tr
+    %th Place
+    %th Date
+    %th Discipline
+    %th Season
+    %th Race Category
+    %th Race Points
+    %th Penalty
+    %th FIS Points
+  =render partial: 'result', collection: @results

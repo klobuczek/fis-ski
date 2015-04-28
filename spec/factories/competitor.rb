@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :competitor do |c|
-    c.gender 'M'
-    c.fis_code 0
-    c.year 1964
-    c.rule Rule.new
+  factory :competitor do
+    gender 'M'
+    fis_code 0
+    year 1964
+    rule Rule.new
   end
 end

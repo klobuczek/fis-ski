@@ -7,11 +7,10 @@ FisSki::Application.routes.draw do
     resources :results
   end
 
-  # resources :competitors
+  resources :competitors
   resources :standings
 
   resource :rule
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

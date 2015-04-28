@@ -31,6 +31,14 @@ task :double => :environment do
   ActiveRecord::Base.connection.execute "update races set factor=2 where codex in (#{ENV['codex']}) and season = #{Season.current.to_i}"
 end
 
+task penalty: :environment do
+  Race.update_all(penalty: nil)
+  Race.loaded.each do |race|
+    race.update_penalty
+    puts "Race: #{race.place},Date: #{race.date}, #{race.discipline} #{race.age_group}, Loaded before: #{Race.loaded.where("date < ?", race.date).where(race.attributes.slice('discipline', 'age_group')).count} Penalty: #{race.penalty}"
+  end
+end
+
 def timer
   puts "Updating results..."
   start = Time.new
