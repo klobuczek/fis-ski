@@ -1,7 +1,7 @@
 class Rule
   include ActiveAttr::Model
   attribute :cup_points_rule, default: 15
-  attribute :handicap, type: Float, default: 0.4
+  attribute :handicap, type: Float, default: 0
   attribute :min_races, type: Integer
   attribute :max_races, type: Integer
   attr_reader :cup_points_rule_instance
