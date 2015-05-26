@@ -5,7 +5,7 @@ class StandingsController < ApplicationController
     @competitors = Competitor.classify!(
         Result.group_by_competitor(season.to_i, params[:age_group],
                                    params[:age_class] == 'All' ? nil : params[:age_class].to_i,
-                                   params[:discipline] == 'All' ? nil : params[:discipline]),
+                                   params[:discipline] == 'All' ? nil : params[:discipline], rule),
         rule, remaining_races, params[:filter])
   end
 

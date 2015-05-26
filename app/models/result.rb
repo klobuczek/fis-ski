@@ -6,26 +6,28 @@ class Result < ActiveRecord::Base
   belongs_to :race, inverse_of: :results
 
   scope :successful, -> { where.not time: nil }
-  scope :started, -> { where(failure: [nil, :DSQ, :DNF] ) }
+  scope :started, -> { where(failure: [nil, :DSQ, :DNF]) }
 
   attr_accessor :rank
 
   class << self
-    def group_by_competitor season, age_group, age_class, discipline
-      group_by(
-          group_by(by_age_class(season, age_group, age_class, discipline), :race_id).each { |g| add_ranks(g) }.flatten,
-          :competitor_id).
+    def group_by_competitor season, age_group, age_class, discipline, rule=Rule.new
+      handicap = age_class ? 0 : rule.handicap
+      group_by(group_by(by_age_class(season, age_group, age_class, discipline), :race_id).
+                   each { |g| add_ranks(g, handicap) }.flatten,
+               :competitor_id).
           map { |g| g.first.competitor.tap { |c| c.season_results = g } }
     end
 
-    def add_ranks(sorted_results)
+    def add_ranks(results, handicap=0)
       rank = 0
       previous_time = nil
-      sorted_results.each_with_index do |result, index|
+      sort_with_handicap(results, handicap).each_with_index do |result, index|
         next unless result.time
-        if result.time != previous_time
+        time_with_handicap = result.time_with_handicap(handicap)
+        if time_with_handicap != previous_time
           rank = index + 1
-          previous_time = result.time
+          previous_time = time_with_handicap
         end
         result.rank = rank
       end
@@ -47,6 +49,13 @@ class Result < ActiveRecord::Base
       end.values
     end
 
+    def sort_with_handicap results, handicap
+      results.sort_by { |r| r.time_with_handicap(handicap) || 99999 }
+    end
+  end
+
+  def time_with_handicap handicap
+    @time_with_handicap ||= time * (1 - handicap/100*(race.season - competitor.year - 30)) if time
   end
 
   def cup_points
