@@ -32,11 +32,7 @@ task :double => :environment do
 end
 
 task penalty: :environment do
-  Race.update_all(penalty: nil)
-  Race.loaded.each do |race|
-    race.update_penalty
-    puts "Race: #{race.place},Date: #{race.date}, #{race.discipline} #{race.age_group}, Loaded before: #{Race.loaded.where("date < ?", race.date).where(race.attributes.slice('discipline', 'age_group')).count} Penalty: #{race.penalty}"
-  end
+  Race.recalculate_penalty
 end
 
 def timer

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @penalty.category %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @penalty.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @penalty.max %>
+</p>
+
+<%= link_to 'Edit', edit_penalty_path(@penalty) %> |
+<%= link_to 'Back', penalties_path %>

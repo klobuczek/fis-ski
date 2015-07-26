@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Penalties</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @penalties.each do |penalty| %>
+        <tr>
+            <td><%= penalty.category %></td>
+            <td><%= penalty.min %></td>
+            <td><%= penalty.max %></td>
+            <td><%= link_to 'Edit', edit_penalty_path(penalty) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<p style="color: red">Attention! Click only once per genaration process which takes upto 10 minutes.</p>
+
+<%= button_to 'Regenerate Penalties', generate_penalties_url, style: "color: red", data: {confirm: "Are you sure you want regenrate penalties? It may take up to 10 min. You should not attempt another regeneration during that time frame."} %>

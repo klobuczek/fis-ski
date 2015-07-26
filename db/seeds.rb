@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+Race.distinct.pluck(:category).each { |c| Penalty.create(category: c, min: 0, max: 999) }

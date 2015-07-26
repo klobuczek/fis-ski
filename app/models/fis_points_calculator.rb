@@ -46,6 +46,14 @@ module FisPointsCalculator
     end
 
     class_methods do
+      def recalculate_penalty
+        update_all(penalty: nil)
+        penalties = Hash[Penalty.all.map{|p|[p.category, p]}]
+        loaded.each do |race|
+          race.update_penalty penalties
+          puts "Race: #{race.place},Date: #{race.date}, #{race.discipline} #{race.age_group}, Loaded before: #{loaded.where("date < ?", race.date).where(race.attributes.slice('discipline', 'age_group')).count} Penalty: #{race.penalty}"
+        end
+      end
     end
 
     ZERO_PENALTY_RACE_COUNT = 30
@@ -71,9 +79,17 @@ module FisPointsCalculator
     end
 
 
-    def update_penalty
+    def update_penalty(opts)
       penalty = season < EARLIEST_PENALTY_SEASON || too_few_races_before ? 0 : calculate_penalty
-      update_attribute :penalty, penalty && [penalty, 0].max
+      update_attribute :penalty, limit(penalty, opts)
+    end
+
+    def limit(penalty, opts)
+      category_limit(penalty, opts[category])
+    end
+
+    def category_limit(caclulated_penalty, penalty)
+      caclulated_penalty && [[caclulated_penalty, penalty.min].max, penalty.max].min
     end
 
     def too_few_races_before

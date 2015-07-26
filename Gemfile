@@ -50,6 +50,7 @@ gem "devise"
 gem 'whenever', :require => false
 gem 'simple_form'
 gem 'active_attr'
+gem 'spawnling'
 
 group :development do
 # Use Capistrano for deployment

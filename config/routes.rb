@@ -1,5 +1,10 @@
 FisSki::Application.routes.draw do
 
+  resources :penalties do
+    collection do
+      post :generate
+    end
+  end
   root :to => "standings#index"
   devise_for :users
 
