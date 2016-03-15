@@ -10,6 +10,6 @@ class StandingsController < ApplicationController
   end
 
   def rule
-    @rule ||= Rule.new(params[:rule])
+    @rule ||= Rule.new(params[:rule] || {cup_points_rule: season.to_i <= 2015 ? 15 : 30})
   end
 end

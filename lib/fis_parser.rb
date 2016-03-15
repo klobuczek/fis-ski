@@ -52,7 +52,7 @@ class FisParser
       loaded = false
       failure = nil
       winners_time = nil
-      each_line(race.href, DATA_SELECTOR) do |index, tds|
+      each_line("#{race.href}&catage=all", DATA_SELECTOR) do |index, tds|
         failure =
             case s(tds, 0)
               when 'Disqualified'
@@ -78,8 +78,8 @@ class FisParser
 
     def load_result(race, failure, tds)
       Result.create :failure => failure,
-                    :time => time(tds, 6),
-                    race_points: f(tds, 8),
+                    :time => time(tds, -3),
+                    race_points: f(tds, -1),
                     :race => race,
                     :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
     end
@@ -91,7 +91,7 @@ class FisParser
     end
 
     def num tds, index
-      tds[index].text[/[0-9\.]+/] if numeric? tds, index
+      s(tds, index)[/[0-9\.]+/] if numeric? tds, index
     end
 
     def i td, index

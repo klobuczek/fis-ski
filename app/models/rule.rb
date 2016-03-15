@@ -9,7 +9,7 @@ class Rule
   delegate :cup_points, to: :cup_points_rule_instance
 
   def initialize(attr={})
-    super
+    super(attr)
     @cup_points_rule_instance = Rules::CupPointsRule.new cup_points_rule
   end
 

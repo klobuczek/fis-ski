@@ -4,7 +4,7 @@ class Race < ActiveRecord::Base
   LOADED = 'loaded'
   FMC = {:category => %w{FMC WCM}}
 
-  has_many :results, -> { order(:failure, :time) }, inverse_of: :race
+  has_many :results, -> { order(:failure, :time) }, inverse_of: :race, dependent: :delete_all
 
   scope :to_be_scored, lambda { |season| in_season(season).where("comments is null or comments != 'Cancelled'").where("status is null or status != '#{LOADED}'") }
   scope :fmc, -> { where(FMC) }

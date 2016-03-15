@@ -11,7 +11,7 @@
       .row
         .col-md-12
           %h1 FIS Masters Cup Standings
-          =render :partial => 'shared/menu'
+          =render :partial => 'shared/menu' if params[:admin]
       =content_for?(:body) ? yield(:body) : yield
       %p
         Please send any questions and suggestions to
