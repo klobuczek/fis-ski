@@ -12,7 +12,7 @@
     =competitor.nation
   %td{:align => :right}
     =competitor.cup_points
-  -if tie_breaker  
+  -if tie_breaker && params[:age_class] != 'All'
     %td{:align => :right}
       -if competitor.tie
         ='%.2f' % competitor.race_points

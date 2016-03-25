@@ -8,7 +8,7 @@ class Result < ActiveRecord::Base
   scope :successful, -> { where.not time: nil }
   scope :started, -> { where(failure: [nil, :DSQ, :DNF]) }
 
-  attr_accessor :rank
+  attr_accessor :rank, :handicapped_time
 
   class << self
     def group_by_competitor season, age_group, age_class, discipline, rule=Rule.new
@@ -24,10 +24,10 @@ class Result < ActiveRecord::Base
       previous_time = nil
       sort_with_handicap(results, handicap).each_with_index do |result, index|
         next unless result.time
-        time_with_handicap = result.time_with_handicap(handicap)
-        if time_with_handicap != previous_time
+        result.time_with_handicap(handicap)
+        if result.handicapped_time != previous_time
           rank = index + 1
-          previous_time = time_with_handicap
+          previous_time = result.handicapped_time
         end
         result.rank = rank
       end
@@ -55,7 +55,7 @@ class Result < ActiveRecord::Base
   end
 
   def time_with_handicap handicap
-    @time_with_handicap ||= time * (1 - handicap/100*(race.season - competitor.year - 30)) if time && competitor.year
+    @handicapped_time ||= time * (1 - handicap/100*(race.season - competitor.year - 30)) if time && competitor.year
   end
 
   def cup_points

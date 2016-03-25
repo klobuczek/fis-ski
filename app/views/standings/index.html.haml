@@ -24,7 +24,7 @@
     %th Year
     %th Nation
     %th Cup Points
-    -if tie_breaker
+    -if tie_breaker && params[:age_class] != 'All'
       %th Race Points Sum
     %th Finishes
   =render :partial=> 'competitor', :collection => @competitors

@@ -4,6 +4,7 @@
   %td=result.competitor.year
   %td=result.competitor.nation
   %td=result.time || result.failure
-  %td=result.competitor.fis_points
-  %td=result.race_points
-  %td=result.fis_points if result.successful?
+  %td=result.handicapped_time if result.successful?
+  -#%td=result.competitor.fis_points
+  -#%td=result.race_points
+  -#%td=result.fis_points if result.successful?
