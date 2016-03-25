@@ -21,6 +21,7 @@ class FisParser
     end
 
 
+    HEADER_SELECTOR = '.footable > thead > tr > th'
     DATA_SELECTOR = '.footable > tbody > tr:not(.tr-sep)'
 
     def fetch_races season, url
@@ -52,7 +53,9 @@ class FisParser
       loaded = false
       failure = nil
       winners_time = nil
-      each_line("#{race.href}&catage=all", DATA_SELECTOR) do |index, tds|
+      content = fetch("#{race.href}&catage=all")
+      headers = content.css(HEADER_SELECTOR).each_with_index.map { |s, index| [s.text, index] }.to_h
+      each_content_line(content, DATA_SELECTOR) do |index, tds|
         failure =
             case s(tds, 0)
               when 'Disqualified'
@@ -65,7 +68,7 @@ class FisParser
                 failure
             end
         next if tds.length < 6
-        result = load_result(race, failure, tds)
+        result = load_result(race, failure, tds, headers)
         winners_time ||= result.time
         if result.time && !result.race_points
           f_factor ||= Rules::FFactorRule.f_factor(race)
@@ -76,12 +79,12 @@ class FisParser
       loaded
     end
 
-    def load_result(race, failure, tds)
-      Result.create :failure => failure,
-                    :time => time(tds, -3),
-                    race_points: f(tds, -1),
-                    :race => race,
-                    :competitor => create_or_update(Competitor, {:fis_code => i(tds, 2)}, :name => s(tds, 3), :href => h(tds, 3), :gender => race.gender, :year => i(tds, 4), :nation => c3(tds, 5))
+    def load_result(race, failure, tds, headers)
+      Result.create failure: failure,
+                    time: time(tds, headers['Total Time']),
+                    race_points: f(tds, headers['FIS Points']),
+                    race: race,
+                    competitor: create_or_update(Competitor, {fis_code: i(tds, 2)}, name: s(tds, 3), href: h(tds, 3), gender: race.gender, year: i(tds, 4), nation: c3(tds, 5))
     end
 
     def create_or_update klass, keys, attributes
@@ -103,7 +106,7 @@ class FisParser
     end
 
     def s td, i
-      td[i].try :text
+      td[i].try :text if i
     end
 
     def d td, i
@@ -123,16 +126,19 @@ class FisParser
     end
 
     def to_time s
-      s && s.sub(',','.').split(':').reduce(0) { |s, v| 60*s+v.to_f }
+      s && s.sub(',', '.').split(':').reduce(0) { |s, v| 60*s+v.to_f }
     end
 
     def numeric? tds, i
       s(tds, i) =~ /[0-9\.]+/
     end
 
-    def each_line(url, selector)
-      # fetch(url).css("div.contenu #{selector}").each_with_index do |line, index|
-      fetch(url).css(selector).each_with_index do |line, index|
+    def each_line(url, selector, &block)
+      each_content_line(fetch(url), selector, &block)
+    end
+
+    def each_content_line(content, selector)
+      content.css(selector).each_with_index do |line, index|
         yield(index, (line.name == 'tr' ? line.css('>td') : [line]))
       end
     end
