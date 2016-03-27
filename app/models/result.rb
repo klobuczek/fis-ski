@@ -8,7 +8,7 @@ class Result < ActiveRecord::Base
   scope :successful, -> { where.not time: nil }
   scope :started, -> { where(failure: [nil, :DSQ, :DNF]) }
 
-  attr_accessor :rank, :handicapped_time
+  attr_accessor :rank, :handicapped_time, :discipline
 
   class << self
     def group_by_competitor season, age_group, age_class, discipline, rule=Rule.new

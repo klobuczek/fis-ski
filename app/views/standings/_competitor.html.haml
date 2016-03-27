@@ -1,4 +1,4 @@
-%tr{:style => "font-weight: #{competitor.qualified? ? 'bold' : 'normal'};"}
+%tr{:style => "font-weight: #{competitor.qualified?(0, @rule, params[:seasom], params[:discipline]) ? 'bold' : 'normal'};"}
   %td{:align => :right}
     =competitor.rank
   %td

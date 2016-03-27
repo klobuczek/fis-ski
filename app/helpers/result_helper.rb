@@ -4,6 +4,6 @@ module ResultHelper
   end
 
   def considered result_counter, result
-    result_counter < season.max_races and result.successful?
+    result_counter < @rule.max_races(season, result.race.discipline) and result.successful?
   end
 end

@@ -13,6 +13,6 @@ module CompetitorsHelper
                         
   private
   def completed_min_races?
-    Race.completed(season, params[:age_group]) >= season.min_races
+    Race.completed(season, params[:age_group]) >= @rule.min_races(season, params[:discipline])
   end
 end

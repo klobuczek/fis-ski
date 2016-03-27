@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def remaining_races
-    season.current? ? Race.remaining(params[:age_group], params[:age_class].to_i) : 0
+    season.current? ? Race.remaining(params[:discipline], params[:age_group], params[:age_class].to_i) : 0
   end
 
   def rewrite_params options={}

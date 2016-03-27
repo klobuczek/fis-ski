@@ -10,10 +10,10 @@ class Race < ActiveRecord::Base
   scope :fmc, -> { where(FMC) }
 
   class << self
-    def remaining age_group, age_class=nil
+    def remaining(discipline, age_group, age_class=nil)
       season = Season.current
       age_class = AgeClass.new(:season => season, :age_class => age_class, age_group: age_group)
-      count = pending(season, age_class.gender)
+      count = pending(season, discipline, age_class.gender)
       return count if age_class.gender == 'L'
       return count/2 if count%2 == 0
 
@@ -48,8 +48,8 @@ class Race < ActiveRecord::Base
       in_season(season).where(:category => 'FMC').order('date desc')
     end
 
-    def pending season, gender
-      to_be_scored(season).fmc.where(:gender => gender).count
+    def pending season, discipline, gender
+      to_be_scored(season).fmc.where((discipline == 'All' ? {} : {discipline: discipline}).merge(gender: gender)).count
     end
 
     def scored season, age_group

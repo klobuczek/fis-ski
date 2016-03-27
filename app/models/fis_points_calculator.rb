@@ -64,7 +64,7 @@ module FisPointsCalculator
     end
 
     def complete_results
-      add_fis_points_at_start ::Result.add_ranks(results.started.includes(:competitor), 0.4)
+      add_fis_points_at_start ::Result.add_ranks(results.started.includes(:competitor), Rule.new.handicap)
     end
 
     def calculate_penalty
