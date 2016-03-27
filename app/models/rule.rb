@@ -23,12 +23,16 @@ class Rule
           when 'Slalom'
             7
           else
-            season.max_races
+            augment_season(season).max_races
         end
   end
 
 
   def min_races season, discipline
-    min || (discipline ? 0 : season.min_races)
+    min || (discipline && discipline != 'All' ? 0 : augment_season(season).min_races)
+  end
+
+  def augment_season season
+    season.is_a?(Season) ? season : season ? Season.new(Season) : Season.current
   end
 end
