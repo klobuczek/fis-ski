@@ -55,7 +55,7 @@ class Result < ActiveRecord::Base
   end
 
   def time_with_handicap handicap
-    @handicapped_time ||= time * (1 - handicap/100*(race.season - competitor.year - 30)) if time && competitor.year
+    @handicapped_time ||= time * (1 - handicap/100*(race.season - competitor.year - 31)) if time && competitor.year
   end
 
   def cup_points
