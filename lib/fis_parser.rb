@@ -15,7 +15,7 @@ class FisParser
 
     private
     def fetch_events season
-      each_line("http://data.fis-ski.com/masters/home.html?seasoncode_search=#{season}&sector_search=MA&limit=999", 'tr[data-line]') do |index, tds|
+      each_line("https://data.fis-ski.com/masters/home.html?seasoncode_search=#{season}&sector_search=MA&limit=999", 'tr[data-line]') do |index, tds|
         fetch_races season, tds[2].at_css('a')[:href]
       end
     end
