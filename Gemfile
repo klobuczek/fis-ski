@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 # ruby '2.2.0'
 
-gem 'rails'
+gem 'rails', '>= 5.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,20 +9,20 @@ gem 'rails'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 5.0.5'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem 'uglifier', '>= 2.7.2'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '>= 4.1.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.0.4'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '>= 5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
+gem 'jbuilder', '>= 2.2.12'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
@@ -32,7 +32,7 @@ gem 'sdoc', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem 'nokogiri'
+gem 'nokogiri', '>= 1.8.2'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
@@ -43,13 +43,13 @@ gem 'nokogiri'
 #   gem 'webrat'
 # end
 
-gem "haml"
+gem "haml", ">= 5.0.0"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem "devise"
+gem "devise", ">= 4.0.0"
 gem 'whenever', :require => false
-gem 'simple_form'
-gem 'active_attr'
+gem 'simple_form', '>= 3.1.0'
+gem 'active_attr', '>= 0.8.5'
 gem 'spawnling'
 
 group :development do
@@ -61,24 +61,24 @@ end
 
 #test
 group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", ">= 3.5.0"
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
+  gem 'web-console', '>= 2.1.3'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem "transpec"
+  gem "transpec", ">= 3.1.0"
 end
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'capybara'
+  gem 'factory_girl_rails', '>= 4.5.0'
+  gem 'capybara', '>= 2.4.4'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 2.45.0'
 end
 
